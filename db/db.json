@@ -1,0 +1,14 @@
+{
+    "admins": [
+        {"id": 1 , "name": "Rick", "password": "321321", "lvl": "4"},
+        {"id": 2 , "name": "Joaquin", "password": "321321", "lvl": "3"},
+        {"id": 3 , "name": "Karla", "password": "321321", "lvl": "2"},
+        {"id": 4 , "name": "Rambo", "password": "321321", "lvl": "1"}
+    ],
+    "users": [
+        {"numberRegister": 2310, "name": "Caio", "company": "IBM"},
+        {"numberRegister": 4320, "name": "Lais", "company": "GitLab"},
+        {"numberRegister": 3260, "name": "Marcelo", "company": "NuBank"},
+        {"numberRegister": 4730, "name": "João", "company": "PicPay"}
+    ]
+}
