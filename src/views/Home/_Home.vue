@@ -40,7 +40,7 @@
                 </td>
                 <td width="10%">
                   <v-btn color="pink darken-1" text>
-                      Deletar
+                      <DialogDeleteUser />
                   </v-btn>
                 </td>
             </tr>
@@ -54,11 +54,13 @@
 <script>
 import { mapState } from 'vuex'
 import DialogRegisterUser from './components/DialogRegisterUser.vue'
+import DialogDeleteUser from './components/DialogDeleteUser.vue'
 
 export default {
     name: "HomePage",
     components: {
-      DialogRegisterUser
+      DialogRegisterUser,
+      DialogDeleteUser
     },
     computed: {
     ...mapState(["homePageModule"])
