@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <Home />
+  <v-app id="App">
+    <Home/>
   </v-app>
 </template>
 
@@ -15,3 +15,9 @@ export default {
 }
 </script>
 
+<style scoped>
+  #App {
+    background-color: rgb(61, 60, 60);
+    font-size: 18px;
+  }
+</style>
