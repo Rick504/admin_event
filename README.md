@@ -1,24 +1,3 @@
-# teste_vue
+# Admin Envent
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    Sistema de admin de evento, onde séra permitido listar usuários cadastrados no sistema, editar dados do mesmo, deletar, e criar um novo registro de um usuário na lista do evento, tudo conforme o nível de permissionamento do admin logado.
