@@ -1,12 +1,12 @@
 <template>
   <v-row>
     <v-btn
-      color="warning"
+      color="success"
       text
       dark
       @click.stop="dialog = true"
     >
-      Editar
+      Cadastrar Novo Usuário
     </v-btn>
 
     <v-dialog
@@ -76,6 +76,6 @@
         v => !!v || 'Campo precisa ser preenchido.',
         v => v.length >= 3 || 'Campo precisa ter o mínimo de 3 caracteres',
     ],
-    }),
+    })
   }
 </script>

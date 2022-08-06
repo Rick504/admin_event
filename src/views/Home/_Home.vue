@@ -8,9 +8,7 @@
             <h2>Usúarios Cadastrados</h2>
         </v-col>
         <v-col offset="5">
-            <v-btn color="success" text >
-                Cadastrar Novo Usuário
-            </v-btn>
+            <DialogRegisterUser />
         </v-col>
     </v-row>
     <v-row>
@@ -21,23 +19,46 @@
               <th class="text-center">Número de Registro</th>
               <th class="text-center">Nome</th>
               <th>Empresa</th>
+              <th v-show="!editUserData"></th>
               <th colspan="2"> Ações </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in homePageModule.users" :key="index">
                 <td width="15%" class="text-center">
-                    {{item.numberRegister}}
+                  <input
+                    :disabled="index !== indexData"
+                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
+                    type="text"
+                    :value="item.numberRegister">
                 </td>
                 <td class="text-center">
-                    {{item.name}}
+                  <input
+                    :disabled="index !== indexData"
+                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
+                    type="text"
+                    :value="item.name">
                 </td>
+
                 <td>
-                    {{item.company}}
+                  <input
+                  :disabled="index !== indexData"
+                  :class="inputEdit && index == indexData? 'inputEdit' : ''"
+                  type="text"
+                  :value="item.company">
                 </td>
+                <td v-show="!editUserData">
+                  <v-btn v-if="index == indexData">
+                    Salvar
+                  </v-btn>
+                </td>
+
                 <td width="10%">
-                      <DialogRegisterUser />
+                  <v-btn color="warning" text @click="editUser(index)">
+                    Editar
+                  </v-btn>
                 </td>
+
                 <td width="10%">
                   <v-btn color="pink darken-1" text>
                       <DialogDeleteUser />
@@ -58,9 +79,23 @@ import DialogDeleteUser from './components/DialogDeleteUser.vue'
 
 export default {
     name: "HomePage",
+    data() {
+      return {
+        editUserData: true,
+        indexData: '',
+        inputEdit: false
+      }
+    },
     components: {
-      DialogRegisterUser,
-      DialogDeleteUser
+    DialogRegisterUser,
+    DialogDeleteUser
+    },
+    methods: {
+      editUser(index) {
+        this.indexData = index
+        this.editUserData = !this.editUserData
+        this.inputEdit = !this.inputEdit
+      }
     },
     computed: {
     ...mapState(["homePageModule"])
@@ -71,6 +106,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  input {
+    background: rgb(31, 30, 30);
+    color: aliceblue;
+    text-align: center;
+    border-radius: 5px;
+  }
 
+  .inputEdit {
+    background: rgb(252, 246, 246);
+    color: rgb(10, 10, 10);
+  }
 </style>
