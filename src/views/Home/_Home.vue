@@ -42,10 +42,10 @@
 
                 <td>
                   <input
-                  :disabled="index !== indexData"
-                  :class="inputEdit && index == indexData? 'inputEdit' : ''"
-                  type="text"
-                  :value="item.company">
+                    :disabled="index !== indexData"
+                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
+                    type="text"
+                    :value="item.company">
                 </td>
                 <td v-show="!editUserData">
                   <v-btn v-if="index == indexData">
@@ -74,8 +74,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import DialogRegisterUser from './components/DialogRegisterUser.vue'
-import DialogDeleteUser from './components/DialogDeleteUser.vue'
+import {
+  DialogRegisterUser,
+  DialogDeleteUser
+} from './components'
 
 export default {
     name: "HomePage",
@@ -83,12 +85,17 @@ export default {
       return {
         editUserData: true,
         indexData: '',
-        inputEdit: false
+        inputEdit: false,
+        userData: {
+          numberRegister: '',
+          name: '',
+          company: ''
+        }
       }
     },
     components: {
-    DialogRegisterUser,
-    DialogDeleteUser
+      DialogRegisterUser,
+      DialogDeleteUser
     },
     methods: {
       editUser(index) {
@@ -98,7 +105,7 @@ export default {
       }
     },
     computed: {
-    ...mapState(["homePageModule"])
+    ...mapState(["homePageModule"]),
     },
     mounted () {
         this.$store.dispatch('httpUsersDetailGet')
