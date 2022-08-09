@@ -8,7 +8,7 @@
             <h2>Usúarios Cadastrados</h2>
         </v-col>
         <v-col offset="5">
-            <DialogAddUser />
+            <DialogInsertUser />
         </v-col>
     </v-row>
     <v-row>
@@ -56,7 +56,7 @@
 <script>
 import { mapState } from 'vuex'
 import {
-  DialogAddUser,
+  DialogInsertUser,
   DialogDeleteUser
 } from './components'
 
@@ -67,7 +67,7 @@ export default {
       }
     },
     components: {
-      DialogAddUser,
+      DialogInsertUser,
       DialogDeleteUser
     },
     methods: {
@@ -79,7 +79,7 @@ export default {
     ...mapState(["homePageModule"]),
     },
     mounted () {
-        this.$store.dispatch('httpUsersDetailGet')
+        this.$store.dispatch('httpUsersDetail')
     },
 }
 </script>

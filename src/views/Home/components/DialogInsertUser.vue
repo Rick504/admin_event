@@ -19,7 +19,7 @@
         <v-row>
           <v-col>
               <v-text-field
-                  v-model="userName"
+                  v-model="userData.userName"
                   :rules="nameRules"
                   label="Nome"
                   required
@@ -30,7 +30,7 @@
           <v-row>
           <v-col>
               <v-text-field
-                  v-model="company"
+                  v-model="userData.company"
                   :rules="nameRules"
                   label="Empresa"
                   required
@@ -51,8 +51,8 @@
                   <v-btn
                       color="green darken-1"
                       text
-                      @click="dialog = false"
-                      :disabled="!valid || userName == ''"
+                      @click="saveUser"
+                      :disabled="!valid || userData.userName == ''"
                   >
                       Adicionar a lista
                   </v-btn>
@@ -70,12 +70,20 @@
     data: () => ({
       dialog: false,
       valid: true,
-      userName: '',
-      company: '',
+      userData: {
+        userName: '',
+        company: '',
+      },
       nameRules: [
         v => !!v || 'Campo precisa ser preenchido.',
         v => v.length >= 3 || 'Campo precisa ter o mínimo de 3 caracteres',
     ],
-    })
+    }),
+    methods: {
+      saveUser() {
+        this.$store.dispatch('httpUserInsert', this.userData)
+        this.dialog = false
+      }
+    }
   }
 </script>
