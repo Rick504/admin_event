@@ -8,7 +8,7 @@
             <h2>Usúarios Cadastrados</h2>
         </v-col>
         <v-col offset="5">
-            <DialogRegisterUser />
+            <DialogAddUser />
         </v-col>
     </v-row>
     <v-row>
@@ -19,42 +19,23 @@
               <th class="text-center">Número de Registro</th>
               <th class="text-center">Nome</th>
               <th>Empresa</th>
-              <th v-show="!editUserData"></th>
               <th colspan="2"> Ações </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in homePageModule.users" :key="index">
                 <td width="15%" class="text-center">
-                  <input
-                    :disabled="index !== indexData"
-                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
-                    type="text"
-                    :value="item.numberRegister">
+                  {{item.numberRegister}}
                 </td>
                 <td class="text-center">
-                  <input
-                    :disabled="index !== indexData"
-                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
-                    type="text"
-                    :value="item.name">
+                  {{item.name}}
                 </td>
 
                 <td>
-                  <input
-                    :disabled="index !== indexData"
-                    :class="inputEdit && index == indexData? 'inputEdit' : ''"
-                    type="text"
-                    :value="item.company">
+                  {{item.company}}
                 </td>
-                <td v-show="!editUserData">
-                  <v-btn v-if="index == indexData">
-                    Salvar
-                  </v-btn>
-                </td>
-
                 <td width="10%">
-                  <v-btn color="warning" text @click="editUser(index)">
+                  <v-btn color="warning" text @click="editUser(item.numberRegister)">
                     Editar
                   </v-btn>
                 </td>
@@ -75,7 +56,7 @@
 <script>
 import { mapState } from 'vuex'
 import {
-  DialogRegisterUser,
+  DialogAddUser,
   DialogDeleteUser
 } from './components'
 
@@ -83,25 +64,15 @@ export default {
     name: "HomePage",
     data() {
       return {
-        editUserData: true,
-        indexData: '',
-        inputEdit: false,
-        userData: {
-          numberRegister: '',
-          name: '',
-          company: ''
-        }
       }
     },
     components: {
-      DialogRegisterUser,
+      DialogAddUser,
       DialogDeleteUser
     },
     methods: {
-      editUser(index) {
-        this.indexData = index
-        this.editUserData = !this.editUserData
-        this.inputEdit = !this.inputEdit
+      editUser(numberRegister) {
+        console.log(numberRegister)
       }
     },
     computed: {

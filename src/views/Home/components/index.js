@@ -1,2 +1,2 @@
 export { default as DialogDeleteUser } from './DialogDeleteUser'
-export { default as DialogRegisterUser } from './DialogRegisterUser'
+export { default as DialogAddUser } from './DialogAddUser'
