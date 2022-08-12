@@ -32,8 +32,13 @@
       "id": 1
     },
     {
-      "userName": "TRE",
-      "company": "EMS",
+      "id": 2,
+      "userName": "João",
+      "company": "Bradesco"
+    },
+    {
+      "userName": "Joaquin",
+      "company": "Santander",
       "id": 3
     }
   ]

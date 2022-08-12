@@ -35,8 +35,8 @@
                   {{item.company}}
                 </td>
                 <td width="10%">
-                  <v-btn color="warning" text @click="editUser(item.id)">
-                    Editar
+                  <v-btn color="warning" text>
+                    <DialogEditUser :user="item" />
                   </v-btn>
                 </td>
 
@@ -60,7 +60,8 @@
 import { mapState } from 'vuex'
 import {
   DialogInsertUser,
-  DialogDeleteUser
+  DialogDeleteUser,
+  DialogEditUser
 } from './components'
 
 export default {
@@ -71,12 +72,8 @@ export default {
     },
     components: {
       DialogInsertUser,
-      DialogDeleteUser
-    },
-    methods: {
-      editUser(id) {
-        console.log(id)
-      }
+      DialogDeleteUser,
+      DialogEditUser
     },
     computed: {
     ...mapState(["homePageModule"]),

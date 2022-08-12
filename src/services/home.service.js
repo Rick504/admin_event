@@ -27,6 +27,15 @@ export default {
     catch (err)
         { return await
             Promise.reject(err) }
+  },
+
+  userEdit: async (data) => {
+    try
+        { return await
+            httpClient.put(`users/${data.id}`, data) }
+    catch (err)
+        { return await
+            Promise.reject(err) }
   }
 
 }

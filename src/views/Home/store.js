@@ -37,6 +37,17 @@ const homePageModule = {
       } catch {
         (error) => Promise.reject(error);
       }
+    },
+
+    async httpUserEdit({ commit }, userData) {
+      try {
+        await homeService.userEdit(userData);
+
+        const data = await homeService.usersDetails();
+        commit('SET_USERS', data.data);
+      } catch {
+        (error) => Promise.reject(error);
+      }
     }
   },
   getters: {}
