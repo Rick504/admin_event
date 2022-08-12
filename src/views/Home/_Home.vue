@@ -1,14 +1,21 @@
 <template>
   <v-container class="home-container">
     <v-row>
-        <h1>Admin</h1>
+      <v-col>
+        <h1> {{homePageModule.admin.name}} </h1>
+        <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
+        <p v-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+        <p v-if="homePageModule.admin.permissionLevel == 'VISIT'"> Visitante</p>
+      </v-col>
     </v-row>
     <v-row>
         <v-col>
             <h2>Usúarios Cadastrados</h2>
         </v-col>
+
+        <!-- ADD -->
         <v-col offset="5">
-            <DialogInsertUser />
+            <DialogInsertUser v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'" />
         </v-col>
     </v-row>
     <v-row>
@@ -17,31 +24,40 @@
           <thead>
             <tr>
               <th class="text-center">Número de Registro</th>
-              <th class="text-center">Nome</th>
+              <th>Nome</th>
               <th>Empresa</th>
-              <th colspan="2"> Ações </th>
+              <th colspan="2"
+                v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN' ||
+                  homePageModule.admin.permissionLevel == 'OPERATOR'"
+              > Ações </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in homePageModule.users" :key="index">
-                <td width="15%" class="text-center">
+                <td width="30%" class="text-center">
                   {{item.id}}
                 </td>
-                <td class="text-center">
+                <td width="20%" >
                   {{item.userName}}
                 </td>
 
-                <td>
+                <td width="30%">
                   {{item.company}}
                 </td>
-                <td width="10%">
+
+                <!-- EDIT -->
+                <td width="10%"
+                  v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN' ||
+                  homePageModule.admin.permissionLevel == 'OPERATOR'">
                   <v-btn color="warning" text>
                     <DialogEditUser :user="item" />
                   </v-btn>
                 </td>
 
-                <td width="10%">
-                  <v-btn color="pink darken-1" text>
+                <!-- DELETE -->
+                <td width="10%"
+                  v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+                  <v-btn color="pink darken-1" text >
                       <DialogDeleteUser
                         :userId="item.id"
                         :userName="item.userName"
@@ -68,6 +84,7 @@ export default {
     name: "HomePage",
     data() {
       return {
+        userId: 1
       }
     },
     components: {
@@ -79,6 +96,7 @@ export default {
     ...mapState(["homePageModule"]),
     },
     mounted () {
+        this.$store.dispatch('httpAdminDetails', this.userId)
         this.$store.dispatch('httpUsersDetail')
     },
 }

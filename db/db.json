@@ -4,25 +4,19 @@
       "id": 1,
       "name": "Rick",
       "password": "321321",
-      "lvl": "4"
+      "permissionLevel": "GENERAL_ADMIN"
     },
     {
       "id": 2,
       "name": "Joaquin",
       "password": "321321",
-      "lvl": "3"
+      "permissionLevel": "OPERATOR"
     },
     {
       "id": 3,
       "name": "Karla",
       "password": "321321",
-      "lvl": "2"
-    },
-    {
-      "id": 4,
-      "name": "Rambo",
-      "password": "321321",
-      "lvl": "1"
+      "permissionLevel": "VISIT"
     }
   ],
   "users": [
@@ -34,7 +28,7 @@
     {
       "id": 2,
       "userName": "João",
-      "company": "Bradesco"
+      "company": "NuBank"
     },
     {
       "userName": "Joaquin",

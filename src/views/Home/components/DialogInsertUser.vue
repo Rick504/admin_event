@@ -2,7 +2,6 @@
   <v-row>
     <v-btn
       color="success"
-      text
       dark
       @click.stop="dialog = true"
     >

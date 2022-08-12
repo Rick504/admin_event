@@ -2,14 +2,26 @@ import homeService from '@/services/home.service'
 
 const homePageModule = {
   state: {
+    admin: {},
     users: []
   },
   mutations: {
     SET_USERS(state, users) {
       state.users = users;
+    },
+    SET_ADMIN(state, admin) {
+      state.admin = admin;
     }
   },
   actions: {
+    async httpAdminDetails({ commit }, userId) {
+      try {
+        const data = await homeService.adminDetails(userId);
+        commit('SET_ADMIN', data.data);
+      } catch {
+        (error) => Promise.reject(error);
+      }
+    },
     async httpUsersDetail({ commit }) {
       try {
         const data = await homeService.usersDetails();
@@ -38,7 +50,6 @@ const homePageModule = {
         (error) => Promise.reject(error);
       }
     },
-
     async httpUserEdit({ commit }, userData) {
       try {
         await homeService.userEdit(userData);
