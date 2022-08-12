@@ -7,9 +7,6 @@ const homePageModule = {
   mutations: {
     SET_USERS(state, users) {
       state.users = users;
-    },
-    ADD_USER(state, user) {
-      state.users = user
     }
   },
   actions: {
@@ -23,8 +20,17 @@ const homePageModule = {
     },
     async httpUserInsert({ commit }, userData) {
       try {
-        commit('ADD_USER', userData);
         await homeService.userInsert(userData);
+
+        const data = await homeService.usersDetails();
+        commit('SET_USERS', data.data);
+      } catch {
+        (error) => Promise.reject(error);
+      }
+    },
+    async httpUserDelete({ commit }, userId) {
+      try {
+        await homeService.userDelete(userId);
 
         const data = await homeService.usersDetails();
         commit('SET_USERS', data.data);

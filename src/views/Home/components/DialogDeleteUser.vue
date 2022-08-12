@@ -18,13 +18,13 @@
             <v-row class="text-center">
                 <v-col>
                     <v-alert type="error">
-                        Deseja realmente excluir este usuário?
+                        Deseja realmente excluir {{userName}} ?
                     </v-alert>
                 </v-col>
             </v-row>
             <v-row class="text-center">
                 <v-col>
-                    <v-btn text> Sim </v-btn>
+                    <v-btn text @click="userDelete"> Sim </v-btn>
                     <v-btn text @click="dialog = false"> Não, Voltar </v-btn>
                 </v-col>
             </v-row>
@@ -36,8 +36,18 @@
 
 <script>
   export default {
+    props: {
+      userId: Number,
+      userName: String
+    },
     data: () => ({
       dialog: false,
     }),
+    methods: {
+      userDelete() {
+        this.$store.dispatch('httpUserDelete', this.userId)
+        this.dialog = false
+      }
+    }
   }
 </script>

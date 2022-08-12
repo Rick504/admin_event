@@ -1,12 +1,32 @@
 import { httpClient } from './config/http.config'
 
 export default {
-   usersDetails: () => { return httpClient
-      .get('users')
-      .catch((error) => Promise.reject(error))
+
+   usersDetails: async () => {
+    try
+        { return await
+            httpClient.get('users') }
+    catch (err)
+        { return await
+            Promise.reject(err) }
   },
-  userInsert: (data) => {  return httpClient
-      .post('users', data)
-      .catch((error) => Promise.reject(error))
+
+  userInsert: async (data) => {
+    try
+        { return await
+            httpClient.post('users', data) }
+    catch (err)
+        { return await
+            Promise.reject(err) }
+  },
+
+  userDelete: async (params) => {
+    try
+        { return await
+            httpClient.delete(`users/${params}`,) }
+    catch (err)
+        { return await
+            Promise.reject(err) }
   }
-};
+
+}

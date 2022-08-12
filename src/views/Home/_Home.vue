@@ -35,14 +35,17 @@
                   {{item.company}}
                 </td>
                 <td width="10%">
-                  <v-btn color="warning" text @click="editUser(item.numberRegister)">
+                  <v-btn color="warning" text @click="editUser(item.id)">
                     Editar
                   </v-btn>
                 </td>
 
                 <td width="10%">
                   <v-btn color="pink darken-1" text>
-                      <DialogDeleteUser />
+                      <DialogDeleteUser
+                        :userId="item.id"
+                        :userName="item.userName"
+                      />
                   </v-btn>
                 </td>
             </tr>
@@ -71,8 +74,8 @@ export default {
       DialogDeleteUser
     },
     methods: {
-      editUser(numberRegister) {
-        console.log(numberRegister)
+      editUser(id) {
+        console.log(id)
       }
     },
     computed: {
