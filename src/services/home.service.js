@@ -6,7 +6,7 @@ export default {
       .catch((error) => Promise.reject(error))
   },
   userInsert: (data) => {  return httpClient
-      .post('usersInsert', data)
+      .post('users', data)
       .catch((error) => Promise.reject(error))
   }
 };

@@ -25,10 +25,10 @@
           <tbody>
             <tr v-for="(item, index) in homePageModule.users" :key="index">
                 <td width="15%" class="text-center">
-                  {{item.numberRegister}}
+                  {{item.id}}
                 </td>
                 <td class="text-center">
-                  {{item.name}}
+                  {{item.userName}}
                 </td>
 
                 <td>

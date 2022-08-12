@@ -26,7 +26,8 @@ const homePageModule = {
         commit('ADD_USER', userData);
         await homeService.userInsert(userData);
 
-        this.httpUsersDetailGet()
+        const data = await homeService.usersDetails();
+        commit('SET_USERS', data.data);
       } catch {
         (error) => Promise.reject(error);
       }
