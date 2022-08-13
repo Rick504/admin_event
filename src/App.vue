@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
   #App {
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(39, 39, 39);
     font-size: 18px;
   }
 </style>

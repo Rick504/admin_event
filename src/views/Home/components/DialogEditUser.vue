@@ -15,11 +15,17 @@
             <v-container>
                 <v-row class="text-center">
                     <v-col>
-                        <v-text-field
-                            v-model="form.userName"
-                            solo
+                        <div
+                            v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"
                         >
-                        </v-text-field>
+                            <label for="userName">Nome:</label>
+                            <v-text-field
+                                v-model="form.userName"
+                                solo
+                            >
+                            </v-text-field>
+                        </div>
+                        <label for="company">Empresa:</label>
                         <v-text-field
                             v-model="form.company"
                             solo
@@ -40,6 +46,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     props: ['user'],
     data: () => ({
@@ -55,6 +63,9 @@
             this.$store.dispatch('httpUserEdit', this.form)
             this.dialog = false
         }
+    },
+    computed: {
+    ...mapState(["homePageModule"]),
     },
     mounted() {
         this.form.id = this.user.id

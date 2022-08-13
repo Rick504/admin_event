@@ -1,5 +1,44 @@
 <template>
   <v-container class="home-container">
+    <v-alert
+          text
+          :value="homePageModule.alertSuccess.active"
+          color="success"
+        >
+        <v-row>
+          <v-col class="text-center mt-2" cols="11">
+            {{homePageModule.alertSuccess.menssage}}
+          </v-col>
+          <v-col>
+            <v-btn
+              color="pink darken-1"
+              text
+              class="text-center"
+              @click="homePageModule.alertSuccess.active = false"
+              > <strong>X</strong> </v-btn>
+          </v-col>
+        </v-row>
+        </v-alert>
+
+        <v-alert
+          text
+          :value="homePageModule.alertError"
+          color="pink"
+        >
+        <v-row>
+          <v-col class="text-center mt-2" cols="11">
+           <strong>Algo deu errado !!</strong>
+          </v-col>
+          <v-col>
+            <v-btn
+              color="pink darken-1"
+              text
+              class="text-center"
+              @click="homePageModule.alertError = false"
+              > <strong>X</strong> </v-btn>
+          </v-col>
+        </v-row>
+        </v-alert>
     <v-row>
       <v-col>
         <h1> {{homePageModule.admin.name}} </h1>

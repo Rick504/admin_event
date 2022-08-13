@@ -21,14 +21,14 @@
   ],
   "users": [
     {
+      "id": 1,
       "userName": "Caio",
-      "company": "IBM",
-      "id": 1
+      "company": "IBM"
     },
     {
-      "id": 2,
-      "userName": "João",
-      "company": "NuBank"
+      "userName": "dsa",
+      "company": "dsa",
+      "id": 2
     }
   ]
 }
