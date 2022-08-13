@@ -29,11 +29,6 @@
       "id": 2,
       "userName": "João",
       "company": "NuBank"
-    },
-    {
-      "userName": "Joaquin",
-      "company": "Santander",
-      "id": 3
     }
   ]
 }

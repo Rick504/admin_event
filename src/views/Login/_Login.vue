@@ -4,25 +4,31 @@
     <v-container>
       <v-row>
         <v-col>
-          <h1 class="text-center">Login</h1>
+          <h1
+            class="text-center mt-5"
+            style="color: white;"
+          >Login</h1>
         </v-col>
       </v-row>
       <v-row class="mt-16">
         <v-col offset="4" cols="4">
           <v-text-field
-            v-model="userName"
+            v-model="form.userName"
             :rules="nameRules"
-            label="Usúario"
+            placeholder="Usúario"
+            solo
             required
           ></v-text-field>
         </v-col>
 
         <v-col offset="4" cols="4">
           <v-text-field
-            v-model="password"
+            v-model="form.password"
             :rules="passwordRules"
-            label="Senha"
+            placeholder="Senha"
+            autocomplete="off"
             type="password"
+            solo
             required
           ></v-text-field>
         </v-col>
@@ -46,11 +52,13 @@
 <script>
 
 export default {
-  name: "_Login",
+  name: "LoginPage",
   data: () => ({
     valid: true,
-    userName: '',
-    password: '',
+    form: {
+      userName: '',
+      password: '',
+    },
     nameRules: [
       v => !!v || 'Campo precisa ser preenchido.',
       v => v.length >= 3 || 'Campo precisa ter o mínimo de 3 caracteres',
@@ -59,6 +67,11 @@ export default {
       v => !!v || 'Campo precisa ser preenchido.',
       v => v.length > 6 || 'Campo precisa ter o mínimo de 6 caracteres',
     ],
-  })
+  }),
+  methods: {
+    validate() {
+      console.log(this.form)
+    }
+  },
 }
 </script>

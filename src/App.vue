@@ -1,11 +1,11 @@
 <template>
   <v-app id="App">
-    <Home/>
+    <Home />
   </v-app>
 </template>
 
 <script>
-import Home from '@/views/Home/_Home'
+import Home from '@/views/Home/_Home.vue'
 
 export default {
   name: 'App',
@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
   #App {
-    background-color: rgb(61, 60, 60);
+    background-color: rgb(44, 44, 44);
     font-size: 18px;
   }
 </style>

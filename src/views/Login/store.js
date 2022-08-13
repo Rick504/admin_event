@@ -1,7 +1,7 @@
 const loginPageModule = {
   state: () => ({
-    userName: '',
-    password: ''
+    userName: null,
+    password: null
   }),
 
   mutations: {}
