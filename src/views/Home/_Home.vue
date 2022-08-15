@@ -117,7 +117,7 @@ import {
   DialogInsertUser,
   DialogDeleteUser,
   DialogEditUser
-} from './components'
+} from './components/dialogs'
 
 export default {
     name: "HomePage",
