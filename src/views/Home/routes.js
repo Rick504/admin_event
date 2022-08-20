@@ -2,11 +2,11 @@ import Home from '@/views/Home/_Home.vue'
 
 export default [
   {
-    path: '/',
+    path: '/home',
     component: Home,
     meta: {
       title: 'Home',
-      public: false,
+      public: true,
       layout: {
         dialogs: {
           select: false

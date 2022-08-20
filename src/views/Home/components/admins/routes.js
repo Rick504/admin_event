@@ -6,6 +6,7 @@ export default [
     component: AdminsList,
     meta: {
       title: 'Admins',
+      public: true,
       layout: {
         dialogs: {
           select: true

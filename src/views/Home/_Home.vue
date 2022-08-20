@@ -59,39 +59,9 @@
           <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
             <v-row>
               <v-col>
-                <router-link to="/">
-                  <v-btn
-                        fab
-                        dark
-                        text
-                        color="teal"
-                      >
-                        <v-icon dark>
-                          {{icons.mdiFormatListBulletedSquare}}
-                        </v-icon>
-                    &nbsp;
-                    Editar Usuários
-                  </v-btn>
-                </router-link>
-              </v-col>
-              <v-col>
-                <router-link to="/admins">
-                        <v-btn
-                          fab
-                          dark
-                          text
-                          color="teal"
-                        >
-                        <v-icon dark>
-                          {{icons.mdiFormatListBulletedSquare}}
-                        </v-icon>
-                        &nbsp;
-                        Editar Administradores
-                      </v-btn>
-                  </router-link>
+                <BtnLink />
               </v-col>
             </v-row>
-
           </v-col>
         </v-row>
       </v-col>
@@ -162,7 +132,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { mdiFormatListBulletedSquare } from '@mdi/js'
+
+import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
 import {
   DialogInsertUser,
   DialogDeleteUser,
@@ -174,17 +145,16 @@ export default {
     data() {
       return {
         showTable: true,
-        icons: {
-          mdiFormatListBulletedSquare
-        },
+
         userId: 1
       }
     },
     components: {
-      DialogInsertUser,
-      DialogDeleteUser,
-      DialogEditUser
-    },
+    DialogInsertUser,
+    DialogDeleteUser,
+    DialogEditUser,
+    BtnLink
+},
     computed: {
     ...mapState(["homePageModule"]),
     },
@@ -207,6 +177,4 @@ export default {
     background: rgb(252, 246, 246);
     color: rgb(10, 10, 10);
   }
-
-  a { text-decoration: none; }
 </style>
