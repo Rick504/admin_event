@@ -24,6 +24,11 @@
       "id": 1,
       "userName": "Caio",
       "company": "IBM"
+    },
+    {
+      "id": 2,
+      "userName": "teste 2",
+      "company": "emp teste 2"
     }
   ]
 }
