@@ -44,7 +44,7 @@ const homePageModule = {
       }
     },
     async httpUserInsert({ commit }, userData) {
-      let alertText = "Usuário Adicionado a lista com Sucesso !!"
+      let alertText = "Usuário adicionado a lista com sucesso !!"
 
       try {
         await homeService.userInsert(userData)
@@ -58,7 +58,7 @@ const homePageModule = {
       }
     },
     async httpUserDelete({ commit }, userId) {
-      let alertText = "Usuário Excluido com Sucesso !!"
+      let alertText = "Usuário deletado com sucesso !!"
 
       try {
         await homeService.userDelete(userId)
@@ -72,7 +72,7 @@ const homePageModule = {
       }
     },
     async httpUserEdit({ commit }, userData) {
-      let alertText = "Usuário Editado com Sucesso !!"
+      let alertText = "Usuário editado com sucesso !!"
 
       try {
         await homeService.userEdit(userData)

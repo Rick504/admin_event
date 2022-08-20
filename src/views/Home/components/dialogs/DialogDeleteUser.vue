@@ -17,15 +17,29 @@
         <v-container>
             <v-row class="text-center">
                 <v-col>
-                    <v-alert type="error">
+                    <v-alert type="error" text>
                         Deseja realmente excluir {{userName}} ?
                     </v-alert>
                 </v-col>
             </v-row>
             <v-row class="text-center">
                 <v-col>
-                    <v-btn text @click="userDelete"> Sim </v-btn>
-                    <v-btn text @click="dialog = false"> Não, Voltar </v-btn>
+                  <v-btn
+                      class="ma-1"
+                      color="grey"
+                      plain
+                      @click="dialog = false"
+                    >
+                      Cancelar
+                    </v-btn>
+                  <v-btn
+                      class="ma-1"
+                      color="error"
+                      plain
+                      @click="userDelete"
+                    >
+                      Sim
+                    </v-btn>
                 </v-col>
             </v-row>
         </v-container>
