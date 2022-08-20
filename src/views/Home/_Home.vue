@@ -41,19 +41,45 @@
         </v-alert>
     <v-row>
       <v-col>
-        <h1> {{homePageModule.admin.name}} </h1>
-        <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
-        <p v-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
-        <p v-if="homePageModule.admin.permissionLevel == 'VISIT'"> Visitante</p>
+        <v-row>
+          <v-col cols="5" class="mx-5">
+            <v-btn
+              fab
+              dark
+              color="indigo"
+            >
+              <strong>{{homePageModule.admin.name}} </strong>
+            </v-btn>
+            <div class="mt-3">
+              <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
+              <p v-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-if="homePageModule.admin.permissionLevel == 'VISIT'"> Visitante</p>
+            </div>
+          </v-col>
+          <v-col>
+            <v-btn
+              fab
+              dark
+              text
+              color="teal"
+            >
+              <v-icon dark>
+                {{icons.mdiFormatListBulletedSquare}}
+              </v-icon>
+              &nbsp;
+              Editar Administradores
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
     <v-row>
-        <v-col>
+        <v-col cols="9">
             <h2>Usúarios Cadastrados</h2>
         </v-col>
 
         <!-- ADD -->
-        <v-col offset="5">
+        <v-col class="mt-4">
             <DialogInsertUser v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'" />
         </v-col>
     </v-row>
@@ -113,6 +139,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { mdiFormatListBulletedSquare } from '@mdi/js'
 import {
   DialogInsertUser,
   DialogDeleteUser,
@@ -123,6 +150,9 @@ export default {
     name: "HomePage",
     data() {
       return {
+        icons: {
+          mdiFormatListBulletedSquare
+        },
         userId: 1
       }
     },

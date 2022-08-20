@@ -7,6 +7,8 @@
       dark
       @click.stop="dialog = true"
     >
+      <v-icon>{{ icons.mdiPencil }}</v-icon>
+      &nbsp;
       Editar
     </v-btn>
 
@@ -47,10 +49,14 @@
 
 <script>
   import { mapState } from 'vuex'
+  import { mdiPencil } from '@mdi/js'
 
   export default {
     props: ['user'],
     data: () => ({
+        icons: {
+            mdiPencil
+        },
         dialog: false,
         form: {
             id: null,

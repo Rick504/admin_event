@@ -2,9 +2,13 @@
   <v-row>
     <v-btn
       color="success"
+      text
       dark
       @click.stop="dialog = true"
     >
+      <v-icon dark>
+        {{icons.mdiPlus}}
+      </v-icon>
       Cadastrar Novo Usuário
     </v-btn>
 
@@ -65,8 +69,13 @@
 </template>
 
 <script>
+  import { mdiPlus } from '@mdi/js'
+
   export default {
     data: () => ({
+      icons: {
+        mdiPlus
+      },
       dialog: false,
       valid: true,
       userData: {
