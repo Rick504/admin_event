@@ -52,11 +52,11 @@
             </v-btn>
             <div class="mt-3">
               <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
-              <p v-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
-              <p v-if="homePageModule.admin.permissionLevel == 'VISIT'"> Visitante</p>
+              <p v-else-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-else> Visitante</p>
             </div>
           </v-col>
-          <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+          <v-col class="mx-5" v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
             <router-link to="/admins">
                 <v-btn
                 fab
@@ -147,7 +147,7 @@ import {
   DialogInsertUser,
   DialogDeleteUser,
   DialogEditUser
-} from './components/dialogs'
+} from '@/views/Home/components/dialogs'
 
 export default {
     name: "HomePage",

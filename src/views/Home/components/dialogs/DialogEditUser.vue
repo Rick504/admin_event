@@ -35,12 +35,24 @@
                         </v-text-field>
                     </v-col>
                 </v-row>
+                <v-row v-if="this.$route.meta.select">
+                    <v-col>
+                        <v-select
+                            v-model="SelectValue"
+                            :items="permissionLevel"
+                            label="Selecionar"
+                            dense
+                            solo
+                        ></v-select>
+                    </v-col>
+                </v-row>
                 <v-row class="text-center">
                     <v-col>
                         <v-btn text @click="dialog = false"> Voltar </v-btn>
                         <v-btn text @click="editUser"> Salvar </v-btn>
                     </v-col>
                 </v-row>
+
             </v-container>
         </v-card>
     </v-dialog>
@@ -54,6 +66,11 @@
   export default {
     props: ['user'],
     data: () => ({
+        permissionLevel: [
+          "Administrador Geral",
+          "Operador",
+          "Visitante"
+        ],
         icons: {
             mdiPencil
         },
