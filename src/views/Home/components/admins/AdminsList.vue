@@ -1,33 +1,94 @@
 <template>
   <v-container class="home-container">
-    <router-link to="/">Voltar</router-link>
-
-      <v-simple-table dark v-for="(item, index) in teste.users" :key="index">
-            <thead>
-              <tr>
-                <th width="5%"></th>
-                <th width="30%">Id</th>
-                <th width="40%">Nome</th>
-                <th>Editar dados</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>
-                  <v-btn color="warning" text>
-                      <DialogEditUser :user="item" />
-                    </v-btn>
-                </td>
-              </tr>
-              </tbody>
-          </v-simple-table>
+    <v-row>
+      <v-col cols="5" class="mx-5">
+        <v-btn
+              fab
+              dark
+              color="indigo"
+            >
+              <strong>{{homePageModule.admin.name}} </strong>
+            </v-btn>
+            <div class="mt-3">
+              <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
+              <p v-else-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-else> Visitante</p>
+            </div>
+      </v-col>
+      <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+        <v-row>
+          <v-col>
+            <router-link to="/">
+               <v-btn
+                    fab
+                    dark
+                    text
+                    color="teal"
+                  >
+                    <v-icon dark>
+                      {{icons.mdiFormatListBulletedSquare}}
+                    </v-icon>
+                  &nbsp;
+                  Editar Usuários
+              </v-btn>
+            </router-link>
+          </v-col>
+          <v-col>
+            <router-link to="/admins">
+                    <v-btn
+                    fab
+                    dark
+                    text
+                    color="teal"
+                  >
+                    <v-icon dark>
+                      {{icons.mdiFormatListBulletedSquare}}
+                    </v-icon>
+                    &nbsp;
+                    Editar Administradores
+                  </v-btn>
+              </router-link>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col class="px-5">
+            <h2>Editar Administradores</h2>
+        </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-simple-table dark v-for="(item, index) in teste.users" :key="index">
+              <thead>
+                <tr>
+                  <th width="5%"></th>
+                  <th width="30%">Id</th>
+                  <th width="40%">Nome</th>
+                  <th>Editar dados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>
+                    <v-btn color="warning" text>
+                        <DialogEditUser :user="item" />
+                      </v-btn>
+                  </td>
+                </tr>
+                </tbody>
+        </v-simple-table>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { mdiFormatListBulletedSquare } from '@mdi/js'
 import {
   DialogEditUser
 } from '@/views/Home/components/dialogs'
@@ -36,6 +97,10 @@ export default {
     name: "AdminsPage",
     data() {
       return {
+        userId: 1,
+        icons: {
+          mdiFormatListBulletedSquare
+        },
         teste: {
           users: [
             {
@@ -50,6 +115,12 @@ export default {
     },
     components: {
       DialogEditUser
+    },
+     computed: {
+    ...mapState(["homePageModule"]),
+    },
+    mounted () {
+        this.$store.dispatch('httpAdminDetails', this.userId)
     },
 }
 </script>

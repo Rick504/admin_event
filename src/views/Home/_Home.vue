@@ -48,7 +48,7 @@
               dark
               color="indigo"
             >
-              <strong>{{homePageModule.admin.name}} </strong>
+              <strong> {{homePageModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
               <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
@@ -56,28 +56,48 @@
               <p v-else> Visitante</p>
             </div>
           </v-col>
-          <v-col class="mx-5" v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
-            <router-link to="/admins">
-                <v-btn
-                fab
-                dark
-                text
-                color="teal"
-              >
-                <v-icon dark>
-                  {{icons.mdiFormatListBulletedSquare}}
-                </v-icon>
-                &nbsp;
-                Editar Administradores
-              </v-btn>
-            </router-link>
+          <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+            <v-row>
+              <v-col>
+                <router-link to="/">
+                  <v-btn
+                        fab
+                        dark
+                        text
+                        color="teal"
+                      >
+                        <v-icon dark>
+                          {{icons.mdiFormatListBulletedSquare}}
+                        </v-icon>
+                    &nbsp;
+                    Editar Usuários
+                  </v-btn>
+                </router-link>
+              </v-col>
+              <v-col>
+                <router-link to="/admins">
+                        <v-btn
+                          fab
+                          dark
+                          text
+                          color="teal"
+                        >
+                        <v-icon dark>
+                          {{icons.mdiFormatListBulletedSquare}}
+                        </v-icon>
+                        &nbsp;
+                        Editar Administradores
+                      </v-btn>
+                  </router-link>
+              </v-col>
+            </v-row>
 
           </v-col>
         </v-row>
       </v-col>
     </v-row>
     <v-row v-if="showTable">
-        <v-col cols="9">
+        <v-col cols="9" class="px-5">
             <h2>Usúarios Cadastrados</h2>
         </v-col>
 

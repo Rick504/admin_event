@@ -4,6 +4,14 @@ export default [
   {
     path: '/',
     component: Home,
-    meta: { select: false }
+    meta: {
+      title: 'Home',
+      public: false,
+      layout: {
+        dialogs: {
+          select: false
+        }
+      }
+    }
   }
 ]

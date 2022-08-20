@@ -35,7 +35,7 @@
                         </v-text-field>
                     </v-col>
                 </v-row>
-                <v-row v-if="this.$route.meta.select">
+                <v-row v-if="this.$route.meta?.layout.dialogs.select">
                     <v-col>
                         <v-select
                             v-model="SelectValue"

@@ -4,6 +4,13 @@ export default [
   {
     path: '/admins',
     component: AdminsList,
-    meta: { select: true }
+    meta: {
+      title: 'Admins',
+      layout: {
+        dialogs: {
+          select: true
+        }
+      }
+    }
   }
 ]
