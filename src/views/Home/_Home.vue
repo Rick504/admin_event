@@ -145,7 +145,6 @@ export default {
     data() {
       return {
         showTable: true,
-
         userId: 1
       }
     },

@@ -38,7 +38,6 @@
                 <v-row v-if="this.$route.meta?.layout.dialogs.select">
                     <v-col>
                         <v-select
-                            v-model="SelectValue"
                             :items="permissionLevel"
                             label="Selecionar"
                             dense

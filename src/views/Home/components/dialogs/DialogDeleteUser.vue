@@ -6,6 +6,9 @@
       dark
       @click.stop="dialog = true"
     >
+      <v-icon left>
+        {{ icons.mdiDelete }}
+      </v-icon>
       Excluir
     </v-btn>
 
@@ -49,6 +52,8 @@
 </template>
 
 <script>
+  import { mdiDelete } from '@mdi/js'
+
   export default {
     props: {
       userId: Number,
@@ -56,6 +61,9 @@
     },
     data: () => ({
       dialog: false,
+      icons: {
+          mdiDelete
+        }
     }),
     methods: {
       userDelete() {
