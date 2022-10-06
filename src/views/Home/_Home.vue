@@ -42,6 +42,7 @@
     <v-row>
       <v-col>
         <v-row>
+
           <v-col cols="5" class="mx-5">
             <v-btn
               fab
@@ -51,12 +52,12 @@
               <strong> {{homePageModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
-              <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
-              <p v-else-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
+              <p v-else-if="verifyGeneralOperator"> Operador</p>
               <p v-else> Visitante</p>
             </div>
           </v-col>
-          <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+          <v-col v-if="verifyGeneralAdmin">
             <v-row>
               <v-col>
                 <BtnLink />
@@ -73,7 +74,7 @@
 
         <!-- ADD -->
         <v-col class="mt-4">
-            <DialogInsertUser v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'" />
+            <DialogInsertUser v-if="verifyGeneralAdmin" />
         </v-col>
     </v-row>
     <v-row>
@@ -85,8 +86,7 @@
                 <th>Nome</th>
                 <th>Empresa</th>
                 <th colspan="2"
-                  v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN' ||
-                    homePageModule.admin.permissionLevel == 'OPERATOR'"
+                  v-if="verifyGeneralAdmin || verifyGeneralOperator"
                 > Ações </th>
               </tr>
             </thead>
@@ -105,8 +105,7 @@
 
                   <!-- EDIT -->
                   <td width="10%"
-                    v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN' ||
-                    homePageModule.admin.permissionLevel == 'OPERATOR'">
+                    v-if="verifyGeneralAdmin || verifyGeneralOperator">
                     <v-btn color="warning" text>
                       <DialogEditUser :user="item" />
                     </v-btn>
@@ -114,7 +113,7 @@
 
                   <!-- DELETE -->
                   <td width="10%"
-                    v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+                    v-if="verifyGeneralAdmin">
                     <v-btn color="pink darken-1" text >
                         <DialogDeleteUser
                           :userId="item.id"
@@ -149,13 +148,17 @@ export default {
       }
     },
     components: {
-    DialogInsertUser,
-    DialogDeleteUser,
-    DialogEditUser,
-    BtnLink
-},
+      DialogInsertUser,
+      DialogDeleteUser,
+      DialogEditUser,
+      BtnLink
+    },
+    methods: {
+      verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
+      verifyGeneralOperator() { return this.$store.admin.permissionLevel == 'OPERATOR' }
+    },
     computed: {
-    ...mapState(["homePageModule"]),
+    ...mapState(["homePageModule"])
     },
     mounted () {
         this.$store.dispatch('httpAdminDetails', this.userId)

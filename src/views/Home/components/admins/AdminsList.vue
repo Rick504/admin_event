@@ -10,12 +10,12 @@
               <strong>{{homePageModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
-              <p v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"> Administrador Geral</p>
+              <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
               <p v-else-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
               <p v-else> Visitante</p>
             </div>
       </v-col>
-      <v-col v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'">
+      <v-col v-if="verifyGeneralAdmin">
         <v-row>
           <v-col>
             <BtnLink />
@@ -81,6 +81,9 @@ export default {
           ]
         }
       }
+    },
+    methods: {
+      verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' }
     },
     components: {
       DialogEditUser,

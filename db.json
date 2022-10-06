@@ -1,19 +1,34 @@
 {
-  "posts": [
+  "admins": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Rick",
+      "password": "321321",
+      "permissionLevel": "GENERAL_ADMIN"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Joaquin",
+      "password": "321321",
+      "permissionLevel": "OPERATOR"
+    },
+    {
+      "id": 3,
+      "name": "Karla",
+      "password": "321321",
+      "permissionLevel": "VISIT"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": 2,
+      "userName": "teste 2",
+      "company": "emp teste 2"
+    },
+    {
+      "userName": "teste 1",
+      "company": "teste emp 1",
+      "id": 3
+    }
+  ]
 }

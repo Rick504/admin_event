@@ -18,7 +18,7 @@
                 <v-row class="text-center">
                     <v-col>
                         <div
-                            v-if="homePageModule.admin.permissionLevel == 'GENERAL_ADMIN'"
+                            v-if="verifyGeneralAdmin"
                         >
                             <label for="userName">Nome:</label>
                             <v-text-field
@@ -35,7 +35,7 @@
                         </v-text-field>
                     </v-col>
                 </v-row>
-                <v-row v-if="this.$route.meta?.layout.dialogs.select">
+                <v-row v-if="dialogsSelect">
                     <v-col>
                         <v-select
                             :items="permissionLevel"
@@ -84,7 +84,9 @@
         editUser() {
             this.$store.dispatch('httpUserEdit', this.form)
             this.dialog = false
-        }
+        },
+        verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
+        dialogsSelect() { return this.$route.meta?.layout.dialogs.select }
     },
     computed: {
     ...mapState(["homePageModule"]),
