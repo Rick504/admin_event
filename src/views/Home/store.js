@@ -10,6 +10,7 @@ const usersModule = {
     },
     alertError: false,
     admin: {},
+    admins: [],
     users: []
   },
   mutations: {
@@ -18,6 +19,9 @@ const usersModule = {
     },
     SET_ADMIN(state, admin) {
       state.admin = admin;
+    },
+    SET_ADMINS(state, admins) {
+      state.admins = admins;
     },
     CALL_ALERT(state, alertMessage, type) {
       state.alert.active = true
@@ -33,6 +37,14 @@ const usersModule = {
       try {
         const data = await adminsService.adminDetails(userId)
         commit('SET_ADMIN', data.data)
+      } catch {
+        (error) => Promise.reject(error)
+      }
+    },
+    async actionAdminsDetails({ commit }) {
+      try {
+        const data = await adminsService.adminsDetails()
+        commit('SET_ADMINS', data.data)
       } catch {
         (error) => Promise.reject(error)
       }

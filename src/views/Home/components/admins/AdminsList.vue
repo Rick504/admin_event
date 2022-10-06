@@ -30,21 +30,19 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-simple-table dark v-for="(item, index) in teste.users" :key="index">
+        <v-simple-table dark >
               <thead>
                 <tr>
-                  <th width="5%"></th>
-                  <th width="30%">Id</th>
-                  <th width="40%">Nome</th>
+                  <th class="text-center">Número de Registro</th>
+                  <th>Nome</th>
                   <th>Editar dados</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td>{{item.id}}</td>
-                  <td>{{item.name}}</td>
-                  <td>
+                <tr v-for="(item, index) in usersModule.admins" :key="index">
+                  <td width="20%" class="text-center">{{item.id}}</td>
+                  <td width="20%">{{item.name}}</td>
+                  <td width="30%">
                     <v-btn color="warning" text>
                         <DialogEditUser :user="item" />
                       </v-btn>
@@ -61,25 +59,13 @@
 import { mapState } from 'vuex'
 
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import {
-  DialogEditUser
-} from '@/views/Home/components/dialogs'
+import { DialogEditUser } from '@/views/Home/components/dialogs'
 
 export default {
     name: "AdminsPage",
     data() {
       return {
         userId: 1,
-        teste: {
-          users: [
-            {
-              id: 1,
-              name: "Rick teste",
-              password: "teste",
-              permissionLevel: "GENERAL_ADMIN"
-            }
-          ]
-        }
       }
     },
     methods: {
