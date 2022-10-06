@@ -2,9 +2,10 @@ import homeService from '@/services/home.service'
 
 const homePageModule = {
   state: {
-    alertSuccess: {
+    alert: {
       active: false,
-      menssage: null
+      menssage: null,
+      type: null
     },
     alertError: false,
     admin: {},
@@ -17,12 +18,13 @@ const homePageModule = {
     SET_ADMIN(state, admin) {
       state.admin = admin;
     },
-    CALL_ALERT_SUCCESS(state, menssage) {
-      state.alertSuccess.active = true
-      state.alertSuccess.menssage = menssage
+    CALL_ALERT(state, alertMessage, type) {
+      state.alert.active = true
+      state.alert.menssage = alertMessage
+      state.type = type
     },
-    CALL_ALERT_ERROR(state) {
-      state.alertError = true
+    CALL_ALERT_ERROR(state, active) {
+      state.alertError = active
     }
   },
   actions: {
@@ -40,49 +42,49 @@ const homePageModule = {
         commit('SET_USERS', data.data)
       } catch {
         (error) => Promise.reject(error)
-        commit('CALL_ALERT_ERROR')
+        commit('CALL_ALERT_ERROR', true)
       }
     },
     async httpUserInsert({ commit }, userData) {
-      let alertText = "Usuário adicionado a lista com sucesso !!"
+      let alertMessage = "Usuário adicionado a lista com sucesso !!"
 
       try {
         await homeService.userInsert(userData)
         const data = await homeService.usersDetails()
 
         commit('SET_USERS', data.data)
-        commit('CALL_ALERT_SUCCESS', alertText)
+        commit('CALL_ALERT', alertMessage, 'SUCCESS')
       } catch {
         (error) => Promise.reject(error)
-        commit('CALL_ALERT_ERROR')
+        commit('CALL_ALERT_ERROR', true)
       }
     },
     async httpUserDelete({ commit }, userId) {
-      let alertText = "Usuário deletado com sucesso !!"
+      let alertMessage = "Usuário deletado com sucesso !!"
 
       try {
         await homeService.userDelete(userId)
         const data = await homeService.usersDetails()
 
         commit('SET_USERS', data.data)
-        commit('CALL_ALERT_SUCCESS', alertText)
+        commit('CALL_ALERT', alertMessage, 'SUCCESS')
       } catch {
         (error) => Promise.reject(error)
-        commit('CALL_ALERT_ERROR')
+        commit('CALL_ALERT_ERROR', true)
       }
     },
     async httpUserEdit({ commit }, userData) {
-      let alertText = "Usuário editado com sucesso !!"
+      let alertMessage = "Usuário editado com sucesso !!"
 
       try {
         await homeService.userEdit(userData)
         const data = await homeService.usersDetails()
 
         commit('SET_USERS', data.data)
-        commit('CALL_ALERT_SUCCESS', alertText)
+        commit('CALL_ALERT', alertMessage, 'SUCCESS')
       } catch {
         (error) => Promise.reject(error)
-        commit('CALL_ALERT_ERROR')
+        commit('CALL_ALERT_ERROR', true)
       }
     }
   },

@@ -2,19 +2,19 @@
   <v-container class="home-container">
     <v-alert
           text
-          :value="homePageModule.alertSuccess.active"
+          :value="homePageModule.alert.active"
           color="success"
         >
         <v-row>
           <v-col class="text-center mt-2" cols="11">
-            {{homePageModule.alertSuccess.menssage}}
+            {{homePageModule.alert.menssage}}
           </v-col>
           <v-col>
             <v-btn
               color="pink darken-1"
               text
               class="text-center"
-              @click="homePageModule.alertSuccess.active = false"
+              @click="homePageModule.alert.active = false"
               > <strong>X</strong> </v-btn>
           </v-col>
         </v-row>
