@@ -67,7 +67,7 @@
     }),
     methods: {
       userDelete() {
-        this.$store.dispatch('httpUserDelete', this.userId)
+        this.$store.dispatch('actionUserDelete', this.userId)
         this.dialog = false
       }
     }

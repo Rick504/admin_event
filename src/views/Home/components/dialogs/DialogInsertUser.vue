@@ -89,7 +89,7 @@
     }),
     methods: {
       saveUser() {
-        this.$store.dispatch('httpUserInsert', this.userData)
+        this.$store.dispatch('actionUserInsert', this.userData)
         this.dialog = false
       }
     }

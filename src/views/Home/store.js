@@ -1,6 +1,7 @@
-import homeService from '@/services/home.service'
+import usersService from '@/services/users.service'
+import adminsService from '@/services/admins.service'
 
-const homePageModule = {
+const usersModule = {
   state: {
     alert: {
       active: false,
@@ -28,29 +29,29 @@ const homePageModule = {
     }
   },
   actions: {
-    async httpAdminDetails({ commit }, userId) {
+    async actionAdminDetails({ commit }, userId) {
       try {
-        const data = await homeService.adminDetails(userId)
+        const data = await adminsService.adminDetails(userId)
         commit('SET_ADMIN', data.data)
       } catch {
         (error) => Promise.reject(error)
       }
     },
-    async httpUsersDetail({ commit }) {
+    async actionUsersDetail({ commit }) {
       try {
-        const data = await homeService.usersDetails()
+        const data = await usersService.usersDetails()
         commit('SET_USERS', data.data)
       } catch {
         (error) => Promise.reject(error)
         commit('CALL_ALERT_ERROR', true)
       }
     },
-    async httpUserInsert({ commit }, userData) {
+    async actionUserInsert({ commit }, userData) {
       let alertMessage = "Usuário adicionado a lista com sucesso !!"
 
       try {
-        await homeService.userInsert(userData)
-        const data = await homeService.usersDetails()
+        await usersService.userInsert(userData)
+        const data = await usersService.usersDetails()
 
         commit('SET_USERS', data.data)
         commit('CALL_ALERT', alertMessage, 'SUCCESS')
@@ -59,12 +60,12 @@ const homePageModule = {
         commit('CALL_ALERT_ERROR', true)
       }
     },
-    async httpUserDelete({ commit }, userId) {
+    async actionUserDelete({ commit }, userId) {
       let alertMessage = "Usuário deletado com sucesso !!"
 
       try {
-        await homeService.userDelete(userId)
-        const data = await homeService.usersDetails()
+        await usersService.userDelete(userId)
+        const data = await usersService.usersDetails()
 
         commit('SET_USERS', data.data)
         commit('CALL_ALERT', alertMessage, 'SUCCESS')
@@ -73,12 +74,12 @@ const homePageModule = {
         commit('CALL_ALERT_ERROR', true)
       }
     },
-    async httpUserEdit({ commit }, userData) {
+    async actionUserEdit({ commit }, userData) {
       let alertMessage = "Usuário editado com sucesso !!"
 
       try {
-        await homeService.userEdit(userData)
-        const data = await homeService.usersDetails()
+        await usersService.userEdit(userData)
+        const data = await usersService.usersDetails()
 
         commit('SET_USERS', data.data)
         commit('CALL_ALERT', alertMessage, 'SUCCESS')
@@ -91,4 +92,4 @@ const homePageModule = {
   getters: {}
 };
 
-  export default homePageModule
+  export default usersModule

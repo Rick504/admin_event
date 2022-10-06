@@ -2,19 +2,19 @@
   <v-container class="home-container">
     <v-alert
           text
-          :value="homePageModule.alert.active"
+          :value="usersModule.alert.active"
           color="success"
         >
         <v-row>
           <v-col class="text-center mt-2" cols="11">
-            {{homePageModule.alert.menssage}}
+            {{usersModule.alert.menssage}}
           </v-col>
           <v-col>
             <v-btn
               color="pink darken-1"
               text
               class="text-center"
-              @click="homePageModule.alert.active = false"
+              @click="usersModule.alert.active = false"
               > <strong>X</strong> </v-btn>
           </v-col>
         </v-row>
@@ -22,7 +22,7 @@
 
         <v-alert
           text
-          :value="homePageModule.alertError"
+          :value="usersModule.alertError"
           color="pink"
         >
         <v-row>
@@ -34,7 +34,7 @@
               color="pink darken-1"
               text
               class="text-center"
-              @click="homePageModule.alertError = false"
+              @click="usersModule.alertError = false"
               > <strong>X</strong> </v-btn>
           </v-col>
         </v-row>
@@ -49,7 +49,7 @@
               dark
               color="indigo"
             >
-              <strong> {{homePageModule.admin.name}} </strong>
+              <strong> {{usersModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
               <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
@@ -91,7 +91,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in homePageModule.users" :key="index">
+              <tr v-for="(item, index) in usersModule.users" :key="index">
                   <td width="30%" class="text-center">
                     {{item.id}}
                   </td>
@@ -158,11 +158,11 @@ export default {
       verifyGeneralOperator() { return this.$store.admin.permissionLevel == 'OPERATOR' }
     },
     computed: {
-    ...mapState(["homePageModule"])
+    ...mapState(["usersModule"])
     },
     mounted () {
-        this.$store.dispatch('httpAdminDetails', this.userId)
-        this.$store.dispatch('httpUsersDetail')
+        this.$store.dispatch('actionAdminDetails', this.userId)
+        this.$store.dispatch('actionUsersDetail')
     },
 }
 </script>

@@ -1,7 +1,7 @@
 import loginPageModule  from '@/views/Login/store'
-import homePageModule  from '@/views/Home/store'
+import usersModule  from '@/views/Home/store'
 
 export default {
     loginPageModule,
-    homePageModule
+    usersModule
 }

@@ -82,14 +82,14 @@
     }),
     methods: {
         editUser() {
-            this.$store.dispatch('httpUserEdit', this.form)
+            this.$store.dispatch('actionUserEdit', this.form)
             this.dialog = false
         },
         verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
         dialogsSelect() { return this.$route.meta?.layout.dialogs.select }
     },
     computed: {
-    ...mapState(["homePageModule"]),
+    ...mapState(["usersModule"]),
     },
     mounted() {
         this.form.id = this.user.id

@@ -7,11 +7,11 @@
               dark
               color="indigo"
             >
-              <strong>{{homePageModule.admin.name}} </strong>
+              <strong>{{usersModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
               <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
-              <p v-else-if="homePageModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-else-if="usersModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
               <p v-else> Visitante</p>
             </div>
       </v-col>
@@ -90,10 +90,10 @@ export default {
       BtnLink
     },
      computed: {
-    ...mapState(["homePageModule"]),
+    ...mapState(["usersModule"]),
     },
     mounted () {
-        this.$store.dispatch('httpAdminDetails', this.userId)
+        this.$store.dispatch('actionAdminDetails', this.userId)
     },
 }
 </script>
