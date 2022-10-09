@@ -33,9 +33,13 @@ const usersModule = {
     }
   },
   actions: {
-    async actionAdminDetails({ commit }, userId) {
+    async actionAdminDetail({ commit }) {
+      //teste
+      localStorage.setItem('userId', 3)
+      let id = localStorage.getItem('userId')
+
       try {
-        const data = await adminsService.adminDetails(userId)
+        const data = await adminsService.adminDetail(id)
         commit('SET_ADMIN', data.data)
       } catch {
         (error) => Promise.reject(error)

@@ -11,7 +11,7 @@
             </v-btn>
             <div class="mt-3">
               <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
-              <p v-else-if="usersModule.admin.permissionLevel == 'OPERATOR'"> Operador</p>
+              <p v-else-if="verifyOperator"> Operador</p>
               <p v-else> Visitante</p>
             </div>
       </v-col>
@@ -56,8 +56,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
 import { DialogEditUser } from '@/views/Home/components/dialogs'
 
@@ -65,21 +63,20 @@ export default {
     name: "AdminsPage",
     data() {
       return {
-        userId: 1,
+        usersModule: this.$store.state.usersModule
       }
     },
     methods: {
-      verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' }
+      verifyGeneralAdmin() { return this.usersModule.admins.permissionLevel == 'GENERAL_ADMIN' },
+      verifyOperator() { return this.usersModule.admins.permissionLevel == 'OPERATOR' }
     },
     components: {
       DialogEditUser,
       BtnLink
     },
-     computed: {
-    ...mapState(["usersModule"]),
-    },
     mounted () {
-        this.$store.dispatch('actionAdminDetails', this.userId)
+        this.$store.dispatch( 'actionAdminDetail' )
+        this.$store.dispatch( 'actionAdminsDetails' )
     },
 }
 </script>

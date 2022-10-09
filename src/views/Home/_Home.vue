@@ -53,7 +53,7 @@
             </v-btn>
             <div class="mt-3">
               <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
-              <p v-else-if="verifyGeneralOperator"> Operador</p>
+              <p v-else-if="verifyOperator"> Operador</p>
               <p v-else> Visitante</p>
             </div>
           </v-col>
@@ -86,7 +86,7 @@
                 <th>Nome</th>
                 <th>Empresa</th>
                 <th colspan="2"
-                  v-if="verifyGeneralAdmin || verifyGeneralOperator"
+                  v-if="verifyGeneralAdmin || verifyOperator"
                 > Ações </th>
               </tr>
             </thead>
@@ -105,7 +105,7 @@
 
                   <!-- EDIT -->
                   <td width="10%"
-                    v-if="verifyGeneralAdmin || verifyGeneralOperator">
+                    v-if="verifyGeneralAdmin || verifyOperator">
                     <v-btn color="warning" text>
                       <DialogEditUser :user="item" />
                     </v-btn>
@@ -130,38 +130,30 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import {
-  DialogInsertUser,
-  DialogDeleteUser,
-  DialogEditUser
-} from '@/views/Home/components/dialogs'
+import { DialogInsertUser, DialogDeleteUser, DialogEditUser } from '@/views/Home/components/dialogs'
 
 export default {
     name: "HomePage",
     data() {
       return {
         showTable: true,
-        userId: 1
+        usersModule: this.$store.state.usersModule
       }
     },
     components: {
-      DialogInsertUser,
-      DialogDeleteUser,
-      DialogEditUser,
-      BtnLink
+        DialogInsertUser,
+        DialogDeleteUser,
+        DialogEditUser,
+        BtnLink
     },
     methods: {
-      verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
-      verifyGeneralOperator() { return this.$store.admin.permissionLevel == 'OPERATOR' }
-    },
-    computed: {
-    ...mapState(["usersModule"])
+      verifyGeneralAdmin() { return this.usersModule.admin.permissionLevel == 'GENERAL_ADMIN' },
+      verifyOperator() { return this.usersModule.admin.permissionLevel == 'OPERATOR' }
     },
     mounted () {
-        this.$store.dispatch('actionAdminDetails', this.userId)
+        this.$store.dispatch('actionAdminDetail')
+        this.$store.dispatch('actionAdminsDetails')
         this.$store.dispatch('actionUsersDetail')
     },
 }

@@ -12,7 +12,7 @@
       Editar
     </v-btn>
 
-    <v-dialog v-model="dialog" max-width="500" >
+    <v-dialog dark v-model="dialog" max-width="500" >
         <v-card >
             <v-container>
                 <v-row class="text-center">
@@ -59,7 +59,6 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
   import { mdiPencil } from '@mdi/js'
 
   export default {
@@ -86,10 +85,7 @@
             this.dialog = false
         },
         verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
-        dialogsSelect() { return this.$route.meta?.layout.dialogs.select }
-    },
-    computed: {
-    ...mapState(["usersModule"]),
+        dialogsSelect() { return this.$route.meta.layout.dialogs.select }
     },
     mounted() {
         this.form.id = this.user.id
