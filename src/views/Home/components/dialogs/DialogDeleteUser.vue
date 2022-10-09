@@ -21,7 +21,7 @@
             <v-row class="text-center">
                 <v-col>
                     <v-alert type="error" text>
-                        Deseja realmente excluir {{userName}} ?
+                        Deseja realmente excluir {{name}} ?
                     </v-alert>
                 </v-col>
             </v-row>
@@ -57,7 +57,7 @@
   export default {
     props: {
       userId: Number,
-      userName: String
+      name: String
     },
     data: () => ({
       dialog: false,

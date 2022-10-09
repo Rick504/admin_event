@@ -20,9 +20,9 @@
                         <div
                             v-if="verifyGeneralAdmin"
                         >
-                            <label for="userName">Nome:</label>
+                            <label for="name">Nome:</label>
                             <v-text-field
-                                v-model="form.userName"
+                                v-model="form.name"
                                 solo
                             >
                             </v-text-field>
@@ -39,7 +39,8 @@
                     <v-col>
                         <v-select
                             :items="permissionLevel"
-                            label="Selecionar"
+                            label="Selecionar nível de permissão"
+                            v-model="form.permissionLevel"
                             dense
                             solo
                         ></v-select>
@@ -48,7 +49,7 @@
                 <v-row class="text-center">
                     <v-col>
                         <v-btn text @click="dialog = false"> Voltar </v-btn>
-                        <v-btn text @click="editUser"> Salvar </v-btn>
+                        <v-btn text @click="save"> Salvar </v-btn>
                     </v-col>
                 </v-row>
 
@@ -65,9 +66,16 @@
     props: ['user'],
     data: () => ({
         permissionLevel: [
-          "Administrador Geral",
-          "Operador",
-          "Visitante"
+            {
+                text: "Administrador Geral",
+                value: "GENERAL_ADMIN"
+            },          {
+                text: "Operador",
+                value: "OPERATOR"
+            },          {
+                text: "Visitante",
+                value: "VISIT"
+            }
         ],
         icons: {
             mdiPencil
@@ -75,22 +83,31 @@
         dialog: false,
         form: {
             id: null,
-            userName: '',
-            company: ''
+            name: '',
+            company: '',
+            permissionLevel: ''
         }
     }),
     methods: {
-        editUser() {
-            this.$store.dispatch('actionUserEdit', this.form)
+        save() {
+            if (this.form.company){
+                delete this.form.permissionLevel
+                this.$store.dispatch('actionUserEdit', this.form)
+            } else {
+                delete this.form.company
+                this.$store.dispatch('actionAdminsEdit', this.form)
+                this.$store.dispatch('actionAdminDetail')
+            }
             this.dialog = false
         },
         verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
-        dialogsSelect() { return this.$route.meta.layout.dialogs.select }
+        dialogsSelect() { return this.$route.meta?.layout.dialogs.select }
     },
     mounted() {
         this.form.id = this.user.id
-        this.form.userName = this.user.userName
+        this.form.name = this.user.name
         this.form.company = this.user.company
+        this.form.permissionLevel = this.user.permissionLevel
     }
   }
 </script>

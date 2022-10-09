@@ -11,4 +11,9 @@ export default {
         try { return await httpClient.get(`admins`) }
         catch (err) { return await Promise.reject(err) }
     },
+
+    adminsEdit: async (data) => {
+        try { return await httpClient.put(`admins/${data.id}`, data) }
+        catch (err) { return await Promise.reject(err) }
+    }
 }

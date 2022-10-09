@@ -22,7 +22,7 @@
         <v-row>
           <v-col>
               <v-text-field
-                  v-model="userData.userName"
+                  v-model="userData.name"
                   :rules="nameRules"
                   label="Nome"
                   required
@@ -55,7 +55,7 @@
                       color="green darken-1"
                       text
                       @click="saveUser"
-                      :disabled="!valid || userData.userName == ''"
+                      :disabled="!valid || userData.name == ''"
                   >
                       Adicionar a lista
                   </v-btn>
@@ -79,7 +79,7 @@
       dialog: false,
       valid: true,
       userData: {
-        userName: '',
+        name: '',
         company: '',
       },
       nameRules: [

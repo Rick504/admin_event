@@ -92,17 +92,31 @@ const usersModule = {
     },
     async actionUserEdit({ commit }, userData) {
       let alertMessage = "Usuário editado com sucesso !!"
+      if (userData.company) {
+        try {
+          await usersService.userEdit(userData)
+          const data = await usersService.usersDetails()
 
-      try {
-        await usersService.userEdit(userData)
-        const data = await usersService.usersDetails()
-
-        commit('SET_USERS', data.data)
-        commit('CALL_ALERT', alertMessage, 'SUCCESS')
-      } catch {
-        (error) => Promise.reject(error)
-        commit('CALL_ALERT_ERROR', true)
+          commit('SET_USERS', data.data)
+          commit('CALL_ALERT', alertMessage, 'SUCCESS')
+        } catch {
+          (error) => Promise.reject(error)
+          commit('CALL_ALERT_ERROR', true)
+        }
       }
+    },
+    async actionAdminsEdit({ commit }, adminData) {
+      let alertMessage = "Administrador editado com sucesso !!"
+            try {
+              await adminsService.adminsEdit(adminData)
+              const data = await adminsService.adminsDetails()
+
+              commit('SET_ADMINS', data.data)
+              commit('CALL_ALERT', alertMessage, 'SUCCESS')
+            } catch {
+              (error) => Promise.reject(error)
+              commit('CALL_ALERT_ERROR', true)
+            }
     }
   },
   getters: {}

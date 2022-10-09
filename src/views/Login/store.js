@@ -1,6 +1,6 @@
 const loginPageModule = {
   state: () => ({
-    userName: null,
+    name: null,
     password: null
   }),
 

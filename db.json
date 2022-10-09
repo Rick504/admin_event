@@ -8,27 +8,25 @@
     },
     {
       "id": 2,
-      "name": "Joaquin",
-      "password": "321321",
+      "name": "Joaquin2",
       "permissionLevel": "OPERATOR"
     },
     {
       "id": 3,
-      "name": "Karla",
-      "password": "321321",
-      "permissionLevel": "VISIT"
+      "name": "Karla2",
+      "permissionLevel": "OPERATOR"
     }
   ],
   "users": [
     {
       "id": 2,
-      "userName": "teste 2",
-      "company": "emp teste 2"
+      "name": "teste",
+      "company": "Google teste2"
     },
     {
-      "userName": "teste 1",
-      "company": "teste emp 1",
-      "id": 3
+      "id": 3,
+      "name": "Joana",
+      "company": "Apple"
     }
   ]
 }

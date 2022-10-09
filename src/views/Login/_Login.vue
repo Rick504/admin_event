@@ -13,7 +13,7 @@
       <v-row class="mt-16">
         <v-col offset="4" cols="4">
           <v-text-field
-            v-model="form.userName"
+            v-model="form.name"
             :rules="nameRules"
             placeholder="Usúario"
             solo
@@ -56,7 +56,7 @@ export default {
   data: () => ({
     valid: true,
     form: {
-      userName: '',
+      name: '',
       password: '',
     },
     nameRules: [

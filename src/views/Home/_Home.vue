@@ -96,7 +96,7 @@
                     {{item.id}}
                   </td>
                   <td width="20%" >
-                    {{item.userName}}
+                    {{item.name}}
                   </td>
 
                   <td width="30%">
@@ -107,7 +107,7 @@
                   <td width="10%"
                     v-if="verifyGeneralAdmin || verifyOperator">
                     <v-btn color="warning" text>
-                      <DialogEditUser :user="item" />
+                      <DialogEdit :user="item" />
                     </v-btn>
                   </td>
 
@@ -117,7 +117,7 @@
                     <v-btn color="pink darken-1" text >
                         <DialogDeleteUser
                           :userId="item.id"
-                          :userName="item.userName"
+                          :name="item.name"
                         />
                     </v-btn>
                   </td>
@@ -131,7 +131,7 @@
 
 <script>
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import { DialogInsertUser, DialogDeleteUser, DialogEditUser } from '@/views/Home/components/dialogs'
+import { DialogInsertUser, DialogDeleteUser, DialogEdit } from '@/views/Home/components/dialogs'
 
 export default {
     name: "HomePage",
@@ -144,7 +144,7 @@ export default {
     components: {
         DialogInsertUser,
         DialogDeleteUser,
-        DialogEditUser,
+        DialogEdit,
         BtnLink
     },
     methods: {

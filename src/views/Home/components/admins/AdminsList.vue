@@ -44,7 +44,7 @@
                   <td width="20%">{{item.name}}</td>
                   <td width="30%">
                     <v-btn color="warning" text>
-                        <DialogEditUser :user="item" />
+                        <DialogEdit :user="item" />
                       </v-btn>
                   </td>
                 </tr>
@@ -57,7 +57,7 @@
 
 <script>
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import { DialogEditUser } from '@/views/Home/components/dialogs'
+import { DialogEdit } from '@/views/Home/components/dialogs'
 
 export default {
     name: "AdminsPage",
@@ -71,7 +71,7 @@ export default {
       verifyOperator() { return this.usersModule.admins.permissionLevel == 'OPERATOR' }
     },
     components: {
-      DialogEditUser,
+      DialogEdit,
       BtnLink
     },
     mounted () {
