@@ -27,16 +27,21 @@
                             >
                             </v-text-field>
                         </div>
-                        <label for="company">Empresa:</label>
-                        <v-text-field
-                            v-model="form.company"
-                            solo
+                        <div
+                            v-if="!this.$route.meta.layout.dialogs.select"
                         >
-                        </v-text-field>
+                         <label for="company">Empresa:</label>
+                            <v-text-field
+                                v-model="form.company"
+                                solo
+                            >
+                            </v-text-field>
+                        </div>
                     </v-col>
                 </v-row>
-                <v-row v-if="dialogsSelect">
+                <v-row v-if="this.$route.meta.layout.dialogs.select">
                     <v-col>
+                        <div for="permissionLevel">Permissionamento:</div>
                         <v-select
                             :items="permissionLevel"
                             label="Selecionar nível de permissão"
@@ -101,7 +106,6 @@
             this.dialog = false
         },
         verifyGeneralAdmin() { return this.$store.admin.permissionLevel == 'GENERAL_ADMIN' },
-        dialogsSelect() { return this.$route.meta?.layout.dialogs.select }
     },
     mounted() {
         this.form.id = this.user.id
