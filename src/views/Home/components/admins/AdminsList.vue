@@ -40,6 +40,7 @@
                 <tr>
                   <th class="text-center">Número de Registro</th>
                   <th>Nome</th>
+                  <th>Tipo de Administrador</th>
                   <th>Editar dados</th>
                 </tr>
               </thead>
@@ -47,6 +48,9 @@
                 <tr v-for="(item, index) in usersModule.admins" :key="index">
                   <td width="20%" class="text-center">{{item.id}}</td>
                   <td width="20%">{{item.name}}</td>
+                  <td width="20%">
+                    {{item.permissionLevel}}
+                  </td>
                   <td width="30%">
                     <v-btn color="warning" text>
                         <DialogEdit :user="item" />
@@ -69,7 +73,19 @@ export default {
     name: "AdminsPage",
     data() {
       return {
-        usersModule: this.$store.state.usersModule
+        usersModule: this.$store.state.usersModule,
+        permissionLevel: [
+            {
+                text: "Administrador Geral",
+                value: "GENERAL_ADMIN"
+            },          {
+                text: "Operador",
+                value: "OPERATOR"
+            },          {
+                text: "Visitante",
+                value: "VISIT"
+            }
+        ],
       }
     },
     methods: {
