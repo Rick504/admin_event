@@ -8,12 +8,12 @@
     },
     {
       "id": 2,
-      "name": "Joaquin2",
+      "name": "Joaquin",
       "permissionLevel": "OPERATOR"
     },
     {
       "id": 3,
-      "name": "Karla2",
+      "name": "Karla",
       "permissionLevel": "VISIT"
     }
   ],

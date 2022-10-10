@@ -1,6 +1,11 @@
 <template>
   <v-container class="home-container">
     <v-row>
+      <v-col>
+        <AlertNotifications />
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="5" class="mx-5">
         <v-btn
               fab
@@ -58,6 +63,7 @@
 <script>
 import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
 import { DialogEdit } from '@/views/Home/components/dialogs'
+import AlertNotifications from '@/views/Home/components/notifications/AlertNotifications'
 
 export default {
     name: "AdminsPage",
@@ -72,7 +78,8 @@ export default {
     },
     components: {
       DialogEdit,
-      BtnLink
+      BtnLink,
+      AlertNotifications
     },
     mounted () {
         this.$store.dispatch( 'actionAdminDetail' )
