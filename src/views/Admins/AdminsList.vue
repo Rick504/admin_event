@@ -65,27 +65,13 @@
 </template>
 
 <script>
-import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import { DialogEdit } from '@/views/Home/components/dialogs'
-import AlertNotifications from '@/views/Home/components/notifications/AlertNotifications'
+import { BtnLink, AlertNotifications, DialogEdit } from '.'
 
 export default {
     name: "AdminsPage",
     data() {
       return {
-        usersModule: this.$store.state.usersModule,
-        permissionLevel: [
-            {
-                text: "Administrador Geral",
-                value: "GENERAL_ADMIN"
-            },          {
-                text: "Operador",
-                value: "OPERATOR"
-            },          {
-                text: "Visitante",
-                value: "VISIT"
-            }
-        ],
+        usersModule: this.$store.state.usersModule
       }
     },
     methods: {

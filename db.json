@@ -9,12 +9,12 @@
     {
       "id": 2,
       "name": "Joaquin",
-      "permissionLevel": "OPERATOR"
+      "permissionLevel": "VISIT"
     },
     {
       "id": 3,
       "name": "Karla",
-      "permissionLevel": "VISIT"
+      "permissionLevel": "OPERATOR"
     }
   ],
   "users": [

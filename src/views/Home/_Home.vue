@@ -96,9 +96,12 @@
 </template>
 
 <script>
-import BtnLink from '@/views/Home/components/utils/BtnLink.vue'
-import { DialogInsertUser, DialogDeleteUser, DialogEdit } from '@/views/Home/components/dialogs'
-import AlertNotifications from '@/views/Home/components/notifications/AlertNotifications'
+import {
+    DialogInsertUser,
+    DialogDeleteUser,
+    DialogEdit,
+    BtnLink,
+    AlertNotifications } from '.'
 
 export default {
     name: "HomePage",
