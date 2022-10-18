@@ -18,12 +18,10 @@
               <strong> {{usersModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
-              <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
-              <p v-else-if="verifyOperator"> Operador</p>
-              <p v-else> Visitante</p>
+              <p> {{ getTranslateItem(usersModule.admin.permissionLevel) }} </p>
             </div>
           </v-col>
-          <v-col v-if="verifyGeneralAdmin">
+          <v-col v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN')">
             <v-row>
               <v-col>
                 <BtnLink />
@@ -40,7 +38,7 @@
 
         <!-- ADD -->
         <v-col class="mt-4">
-            <DialogInsertUser v-if="verifyGeneralAdmin" />
+            <DialogInsertUser v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN')" />
         </v-col>
     </v-row>
     <v-row>
@@ -52,7 +50,8 @@
                 <th>Nome</th>
                 <th>Empresa</th>
                 <th colspan="2"
-                  v-if="verifyGeneralAdmin || verifyOperator"
+                  v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
+                        getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')"
                 > Ações </th>
               </tr>
             </thead>
@@ -71,7 +70,8 @@
 
                   <!-- EDIT -->
                   <td width="10%"
-                    v-if="verifyGeneralAdmin || verifyOperator">
+                    v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
+                          getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">
                     <v-btn color="warning" text>
                       <DialogEdit :user="item" />
                     </v-btn>
@@ -79,7 +79,7 @@
 
                   <!-- DELETE -->
                   <td width="10%"
-                    v-if="verifyGeneralAdmin">
+                    v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN')">
                     <v-btn color="pink darken-1" text >
                         <DialogDeleteUser
                           :userId="item.id"
@@ -101,7 +101,8 @@ import {
     DialogDeleteUser,
     DialogEdit,
     BtnLink,
-    AlertNotifications } from '.'
+    AlertNotifications,
+    translateItem } from '.'
 
 export default {
     name: "HomePage",
@@ -119,8 +120,8 @@ export default {
         BtnLink
     },
     methods: {
-      verifyGeneralAdmin() { return this.usersModule.admin.permissionLevel == 'GENERAL_ADMIN' },
-      verifyOperator() { return this.usersModule.admin.permissionLevel == 'OPERATOR' }
+      getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
+      getTranslateItem(item) { return translateItem(item)}
     },
     mounted () {
         this.$store.dispatch('actionAdminDetail')

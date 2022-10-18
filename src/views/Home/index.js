@@ -3,3 +3,4 @@ export { default as DialogEdit } from '@/views/Home/components/dialogs/DialogEdi
 export { default as DialogDeleteUser } from '@/views/Home/components/dialogs/DialogDeleteUser'
 export { default as DialogInsertUser } from '@/views/Home/components/dialogs/DialogInsertUser'
 export { default as AlertNotifications } from '@/views/Home/components/notifications/AlertNotifications'
+export { default as translateItem } from '@/utils/translateItem'

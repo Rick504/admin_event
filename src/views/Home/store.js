@@ -35,7 +35,7 @@ const usersModule = {
   actions: {
     async actionAdminDetail({ commit }) {
       //teste
-      localStorage.setItem('userId', 3)
+      localStorage.setItem('userId', 1)
       let id = localStorage.getItem('userId')
 
       try {
