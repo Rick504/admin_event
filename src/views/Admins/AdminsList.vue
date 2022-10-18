@@ -7,16 +7,7 @@
     </v-row>
     <v-row>
       <v-col cols="5" class="mx-5">
-        <v-btn
-              fab
-              dark
-              color="indigo"
-            >
-              <strong>{{usersModule.admin.name}} </strong>
-            </v-btn>
-            <div class="mt-3">
-              <p> {{ getTranslateItem(usersModule.admin.permissionLevel) }} </p>
-            </div>
+        <InfoAdmin />
       </v-col>
       <v-col v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
                    getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">
@@ -66,7 +57,7 @@
 </template>
 
 <script>
-import { BtnLink, AlertNotifications, DialogEdit, translateItem } from '.'
+import { BtnLink, AlertNotifications, DialogEdit, translateItem, InfoAdmin } from '.'
 
 export default {
     name: "AdminsPage",
@@ -82,7 +73,8 @@ export default {
     components: {
       DialogEdit,
       BtnLink,
-      AlertNotifications
+      AlertNotifications,
+      InfoAdmin
     },
     mounted () {
         this.$store.dispatch( 'actionAdminDetail' )

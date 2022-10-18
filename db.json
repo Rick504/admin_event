@@ -15,18 +15,43 @@
       "id": 3,
       "name": "Karla",
       "permissionLevel": "OPERATOR"
+    },
+    {
+      "id": 4,
+      "name": "Julia",
+      "permissionLevel": "OPERATOR"
+    },
+    {
+      "id": 5,
+      "name": "Gabriel",
+      "permissionLevel": "VISIT"
     }
   ],
   "users": [
     {
       "id": 2,
-      "name": "teste",
-      "company": "Google teste"
+      "name": "Davi",
+      "company": "Google"
     },
     {
       "id": 3,
       "name": "Joana",
       "company": "Apple"
+    },
+    {
+      "name": "Jean",
+      "company": "Sansung",
+      "id": 4
+    },
+    {
+      "name": "Luiz",
+      "company": "Smart Fit",
+      "id": 5
+    },
+    {
+      "name": "Rony",
+      "company": "Chevrolet",
+      "id": 6
     }
   ]
 }
