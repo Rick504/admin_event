@@ -18,7 +18,8 @@
               <p> {{ getTranslateItem(usersModule.admin.permissionLevel) }} </p>
             </div>
       </v-col>
-      <v-col>
+      <v-col v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
+                   getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">
         <v-row>
           <v-col>
             <BtnLink />
@@ -39,7 +40,8 @@
                   <th class="text-center">Número de Registro</th>
                   <th>Nome</th>
                   <th>Tipo de Administrador</th>
-                  <th>Editar dados</th>
+                  <th v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
+                            getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">Editar dados</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,7 +51,8 @@
                   <td width="20%">
                     {{ getTranslateItem(item.permissionLevel) }}
                   </td>
-                  <td width="30%">
+                  <td width="30%" v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
+                                        getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">
                     <v-btn color="warning" text>
                         <DialogEdit :user="item" />
                       </v-btn>
@@ -73,6 +76,7 @@ export default {
       }
     },
     methods: {
+      getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
       getTranslateItem(item) { return translateItem(item)}
     },
     components: {
