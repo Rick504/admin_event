@@ -15,12 +15,10 @@
               <strong>{{usersModule.admin.name}} </strong>
             </v-btn>
             <div class="mt-3">
-              <p v-if="verifyGeneralAdmin"> Administrador Geral</p>
-              <p v-else-if="verifyOperator"> Operador</p>
-              <p v-else> Visitante</p>
+              <p> {{ getTranslateItem(usersModule.admin.permissionLevel) }} </p>
             </div>
       </v-col>
-      <v-col v-if="verifyGeneralAdmin">
+      <v-col>
         <v-row>
           <v-col>
             <BtnLink />
@@ -49,7 +47,7 @@
                   <td width="20%" class="text-center">{{item.id}}</td>
                   <td width="20%">{{item.name}}</td>
                   <td width="20%">
-                    {{item.permissionLevel}}
+                    {{ getTranslateItem(item.permissionLevel) }}
                   </td>
                   <td width="30%">
                     <v-btn color="warning" text>
@@ -65,7 +63,7 @@
 </template>
 
 <script>
-import { BtnLink, AlertNotifications, DialogEdit } from '.'
+import { BtnLink, AlertNotifications, DialogEdit, translateItem } from '.'
 
 export default {
     name: "AdminsPage",
@@ -75,8 +73,7 @@ export default {
       }
     },
     methods: {
-      verifyGeneralAdmin() { return this.usersModule.admins.permissionLevel == 'GENERAL_ADMIN' },
-      verifyOperator() { return this.usersModule.admins.permissionLevel == 'OPERATOR' }
+      getTranslateItem(item) { return translateItem(item)}
     },
     components: {
       DialogEdit,
