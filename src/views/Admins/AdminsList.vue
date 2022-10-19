@@ -82,17 +82,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-  input {
-    background: rgb(31, 30, 30);
-    color: aliceblue;
-    text-align: center;
-    border-radius: 5px;
-  }
-
-  .inputEdit {
-    background: rgb(252, 246, 246);
-    color: rgb(10, 10, 10);
-  }
-</style>
