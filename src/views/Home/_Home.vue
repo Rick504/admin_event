@@ -48,11 +48,11 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in usersModule.users" :key="index">
-                  <td>
+                  <td width="40%">
                     <div v-if="item.photo">
-                      <v-avatar class="mx-9 my-3">
+                      <v-avatar class="mx-14 my-3">
                           <img
-                            :src="generateImage(item.photo)"
+                            :src="getGenerateImgBase64(item.photo)"
                             alt="Foto"
                           >
                       </v-avatar>
@@ -60,7 +60,7 @@
                         Ver Foto
                       </v-btn>
                     </div>
-                    <div v-else class="mx-9 my-3">
+                    <div v-else class="mx-14 my-3">
                         <v-btn fab> Adicionar Foto </v-btn>
                     </div>
                   </td>
@@ -109,7 +109,8 @@ import {
     DialogEdit,
     BtnLink,
     AlertNotifications,
-    InfoAdmin
+    InfoAdmin,
+    generateImgBase64
   } from '.'
 
 export default {
@@ -130,12 +131,7 @@ export default {
     },
     methods: {
       getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
-      generateImage(item) {
-        let image = new Image();
-        image.src = `data:image/png;base64,${item}`
-
-        return image.src
-      }
+      getGenerateImgBase64(item) {  return generateImgBase64(item) }
     },
     mounted () {
         this.$store.dispatch('actionAdminDetail')
