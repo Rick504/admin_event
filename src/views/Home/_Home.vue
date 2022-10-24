@@ -36,6 +36,7 @@
           <v-simple-table dark v-if="showTable">
             <thead>
               <tr>
+                <th class="text-center">Foto</th>
                 <th class="text-center">Número de Registro</th>
                 <th>Nome</th>
                 <th>Empresa</th>
@@ -47,6 +48,22 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in usersModule.users" :key="index">
+                  <td>
+                    <div v-if="item.photo">
+                      <v-avatar class="mx-9 my-3">
+                          <img
+                            :src="generateImage(item.photo)"
+                            alt="Foto"
+                          >
+                      </v-avatar>
+                      <v-btn>
+                        Ver Foto
+                      </v-btn>
+                    </div>
+                    <div v-else class="mx-9 my-3">
+                        <v-btn fab> Adicionar Foto </v-btn>
+                    </div>
+                  </td>
                   <td width="30%" class="text-center">
                     {{item.id}}
                   </td>
@@ -112,7 +129,13 @@ export default {
         InfoAdmin
     },
     methods: {
-      getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false }
+      getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
+      generateImage(item) {
+        let image = new Image();
+        image.src = `data:image/png;base64,${item}`
+
+        return image.src
+      }
     },
     mounted () {
         this.$store.dispatch('actionAdminDetail')
