@@ -56,10 +56,14 @@
                             alt="Foto"
                           >
                       </v-avatar>
-                      <showPhotoUser :user="item.photo" />
+                      <ShowPhotoUser :user="item.photo" />
                     </div>
                     <div v-else class="mx-14 my-3">
-                        <v-btn fab> Adicionar Foto </v-btn>
+                        <v-btn
+                          fab
+                          @click="newPhoto"
+                        >
+                        Adicionar Foto </v-btn>
                     </div>
                   </td>
                   <td width="30%" class="text-center">
@@ -109,7 +113,7 @@ import {
     AlertNotifications,
     InfoAdmin,
     generateImgBase64,
-    showPhotoUser
+    ShowPhotoUser
   } from '.'
 
 export default {
@@ -126,7 +130,7 @@ export default {
         DialogDeleteUser,
         DialogEdit,
         BtnLink,
-        showPhotoUser,
+        ShowPhotoUser,
         InfoAdmin
     },
     methods: {
