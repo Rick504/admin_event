@@ -60,7 +60,7 @@
                     </div>
                     <div v-else class="mx-14 my-3 text-center">
                       <label>
-                        <input type="file" class="upload-photo"/>
+                        <input type="file"/>
                         <span class="btn-upload-photo">
                           Adicionar Foto
                         </span>
