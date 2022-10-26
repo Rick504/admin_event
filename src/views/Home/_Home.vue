@@ -52,21 +52,22 @@
                     <div v-if="item.photo">
                       <v-avatar class="mx-14 my-3">
                           <img
-                            :src="getGenerateImgBase64(item.photo)"
+                            :src="getRenderImageBase64(item.photo)"
                             alt="Foto"
                           >
                       </v-avatar>
                       <ShowPhotoUser :user="item.photo" />
                     </div>
-                    <div v-else class="mx-14 my-3">
-                        <v-btn
-                          fab
-                          @click="newPhoto"
-                        >
-                        Adicionar Foto </v-btn>
+                    <div v-else class="mx-14 my-3 text-center">
+                      <label>
+                        <input type="file" class="upload-photo"/>
+                        <span class="btn-upload-photo">
+                          Adicionar Foto
+                        </span>
+                      </label>
                     </div>
                   </td>
-                  <td width="30%" class="text-center">
+                  <td width="20%" class="text-center">
                     {{item.id}}
                   </td>
                   <td width="20%" >
@@ -112,7 +113,7 @@ import {
     BtnLink,
     AlertNotifications,
     InfoAdmin,
-    generateImgBase64,
+    renderImageBase64,
     ShowPhotoUser
   } from '.'
 
@@ -135,7 +136,7 @@ export default {
     },
     methods: {
       getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
-      getGenerateImgBase64(item) {  return generateImgBase64(item) }
+      getRenderImageBase64(item) { return renderImageBase64(item) }
     },
     mounted () {
         this.$store.dispatch('actionAdminDetail')

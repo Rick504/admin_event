@@ -1,4 +1,4 @@
-export const generateImgBase64 = (item) => {
+export const renderImageBase64 = (item) => {
 
     let image = new Image();
         image.src = `data:image/png;base64,${item}`
@@ -7,4 +7,4 @@ export const generateImgBase64 = (item) => {
 
 }
 
-export default generateImgBase64
+export default renderImageBase64

@@ -12,12 +12,12 @@
           Ver Foto
           </v-btn>
         </template>
-        <img :src="getGenerateImgBase64(userPhoto)">
+        <img :src="getRenderImageBase64(userPhoto)">
       </v-dialog>
   </template>
 
 <script>
-    import generateImgBase64 from '@/utils/generateImgBase64'
+    import renderImageBase64 from '@/utils/renderImageBase64'
 
     export default {
         props: ['user'],
@@ -27,7 +27,7 @@
             }
         },
         methods: {
-            getGenerateImgBase64(item) {  return generateImgBase64(item) }
+          getRenderImageBase64(item) {  return renderImageBase64(item) }
         },
         mounted() {
             this.userPhoto = this.user
