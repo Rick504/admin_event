@@ -48,17 +48,11 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in usersModule.users" :key="index">
-                  <td width="40%">
+                  <td width="10%">
                     <div v-if="item.photo">
-                      <v-avatar class="mx-14 my-3">
-                          <img
-                            :src="getRenderImageBase64(item.photo)"
-                            alt="Foto"
-                          >
-                      </v-avatar>
-                      <ShowPhotoUser :user="item.photo" />
+                      <ShowPhotoUser :photo="item.photo" />
                     </div>
-                    <div v-else class="mx-14 my-3 text-center">
+                    <div v-else class="text-center">
                       <label>
                         <input type="file"/>
                         <span class="btn-upload-photo">
@@ -67,19 +61,19 @@
                       </label>
                     </div>
                   </td>
-                  <td width="20%" class="text-center">
+                  <td width="15%" class="text-center">
                     {{item.id}}
                   </td>
                   <td width="20%" >
                     {{item.name}}
                   </td>
 
-                  <td width="30%">
+                  <td width="20%">
                     {{item.company}}
                   </td>
 
                   <!-- EDIT -->
-                  <td width="10%"
+                  <td width="15%"
                     v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN') |
                           getVerifyPermission(usersModule.admin.permissionLevel, 'OPERATOR')">
                     <v-btn color="warning" text>
@@ -88,9 +82,9 @@
                   </td>
 
                   <!-- DELETE -->
-                  <td width="10%"
+                  <td width="20%"
                     v-if="getVerifyPermission(usersModule.admin.permissionLevel, 'GENERAL_ADMIN')">
-                    <v-btn color="pink darken-1" text >
+                    <v-btn color="pink darken-1 pe-5" text >
                         <DialogDeleteUser
                           :userId="item.id"
                           :name="item.name"
@@ -136,7 +130,8 @@ export default {
     },
     methods: {
       getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
-      getRenderImageBase64(item) { return renderImageBase64(item) }
+      getRenderImageBase64(item) { return renderImageBase64(item) },
+      getShowPhotoDialog() { return ShowPhotoUser.methods.ShowPhotoDialog() }
     },
     mounted () {
         this.$store.dispatch('actionAdminDetail')
