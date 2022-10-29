@@ -53,12 +53,7 @@
                       <ShowPhotoUser :photo="item.photo" />
                     </div>
                     <div v-else class="text-center">
-                      <label>
-                        <input type="file"/>
-                        <span class="btn-upload-photo">
-                          Adicionar Foto
-                        </span>
-                      </label>
+                      <UploadPhoto />
                     </div>
                   </td>
                   <td width="15%" class="text-center">
@@ -108,7 +103,8 @@ import {
     AlertNotifications,
     InfoAdmin,
     renderImageBase64,
-    ShowPhotoUser
+    ShowPhotoUser,
+    UploadPhoto
   } from '.'
 
 export default {
@@ -126,7 +122,8 @@ export default {
         DialogEdit,
         BtnLink,
         ShowPhotoUser,
-        InfoAdmin
+        InfoAdmin,
+        UploadPhoto
     },
     methods: {
       getVerifyPermission(userPermission, permission) { return userPermission === permission? true : false },
