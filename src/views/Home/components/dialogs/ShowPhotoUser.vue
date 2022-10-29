@@ -4,7 +4,10 @@
         width="500"
       >
       <template v-slot:activator="{ on, attrs }">
-          <v-avatar class="mx-16 my-2">
+          <v-avatar
+            size="65"
+            class="mx-16 my-1"
+            >
             <img
               v-bind="attrs"
               v-on="on"
