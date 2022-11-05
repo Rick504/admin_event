@@ -10,7 +10,7 @@
             Adicionar Foto
         </span>
         <div>
-            <img ref="imgDone" :src="image">
+            <img ref="imgDone" src="../../../../../../../../../Imagens/Capturas de tela/Captura de tela de 2022-11-01 12-18-26.png">
         </div>
     </label>
     </div>
@@ -39,8 +39,7 @@ export default {
                 scalable: false,
                 aspectRatio: 1
             })
-        console.log(this.cropper )
-        }
+        },
     }
 }
 </script>
