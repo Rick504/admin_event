@@ -30,8 +30,7 @@
             }
         },
         methods: {
-          getRenderImageBase64(item) { return renderImageBase64(item) },
-          ShowPhotoDialog() { return this.dialog = true }
+          getRenderImageBase64(item) { return renderImageBase64(item) }
         },
         mounted() {
             this.userPhoto = this.photo

@@ -1,18 +1,19 @@
 <template>
     <div>
-    <label>
-        <input
-            ref="uploadFile"
-            type="file"
-            @change="uploadFile"
-        />
-        <span class="btn-upload-photo">
-            Adicionar Foto
-        </span>
-        <div>
-            <img ref="imgDone" src="../../../../../../../../../Imagens/Capturas de tela/Captura de tela de 2022-11-01 12-18-26.png">
-        </div>
-    </label>
+        <label>
+            <input ref="uploadFile" type="file" @change="uploadFile" />
+            <span class="btn-upload-photo">
+                Adicionar Foto
+            </span>
+        </label>
+        <v-dialog v-model="dialog" width="500">
+                <img
+                    ref="cropperRef">
+                <div class="d-flex justify-space-around">
+                    <v-btn @click="dialog = false"> Fechar </v-btn>
+                    <v-btn @click="save"> Salvar </v-btn>
+                </div>
+        </v-dialog>
     </div>
 </template>
 
@@ -24,22 +25,32 @@ export default {
         return {
             cropper: {},
             image: null,
-            reader: null
+            reader: null,
+            dialog: false
         }
     },
     methods: {
-        uploadFile(e) {
+        async uploadFile(e) {
+            this.dialog = true
+
             this.image = e.target.files[0]
             this.reader = new FileReader()
 
+            await this.$refs.cropperRef
+
             this.reader.readAsDataURL(this.image)
-            this.reader.onload = e =>{ this.image = e.target.result }
-            this.cropper = new Cropper(this.$refs.imgDone, {
-                zoomable: false,
-                scalable: false,
-                aspectRatio: 1
-            })
+            this.reader.onload = e =>{
+                this.$refs.cropperRef.src = e.target.result
+                this.cropper = new Cropper(this.$refs.cropperRef, {
+                    zoomable: false,
+                    scalable: false,
+                    aspectRatio: 1
+                })
+            }
         },
+        save() {
+            console.log('salvar')
+        }
     }
 }
 </script>
