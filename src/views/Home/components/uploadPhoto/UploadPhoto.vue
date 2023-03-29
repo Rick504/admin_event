@@ -31,7 +31,7 @@ export default {
                     const newUserData = response.data
                     // console.log(newUserData)
                     await usersService.userEdit(newUserData)
-                    alert('Foto adocionada com sucesso !!')
+                    alert('Foto adocionada com sucesso, atualize a pagina !!')
                 }
             }
         }

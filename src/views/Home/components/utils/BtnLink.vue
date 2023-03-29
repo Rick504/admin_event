@@ -1,7 +1,7 @@
 <template>
     <v-row>
         <v-col>
-            <router-link to="/home">
+            <router-link to="/">
                 <v-btn fab dark text color="teal">
                     <v-icon dark>
                         {{ icons.mdiFormatListBulletedSquare }}

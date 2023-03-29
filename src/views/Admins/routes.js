@@ -1,4 +1,4 @@
-import AdminsList from './AdminsList.vue'
+import AdminsList from './AdminsList.vue';
 
 export default [
   {
@@ -7,12 +7,12 @@ export default [
     component: AdminsList,
     meta: {
       title: 'Admins',
-      public: true,
+      public: false,
       layout: {
         dialogs: {
-          select: true
-        }
-      }
-    }
-  }
-]
+          select: true,
+        },
+      },
+    },
+  },
+];

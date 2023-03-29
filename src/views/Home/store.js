@@ -34,12 +34,12 @@ const usersModule = {
   },
   actions: {
     async actionAdminDetail({ commit }) {
-      //teste
-      localStorage.setItem('userId', 1);
-      let id = localStorage.getItem('userId');
+      //test de permissão =================================================================================
+      let TESTE_ID = 1;
+      //test de permissão =================================================================================
 
       try {
-        const data = await adminsService.adminDetail(id);
+        const data = await adminsService.adminDetail(TESTE_ID);
         commit('SET_ADMIN', data.data);
       } catch {
         (error) => Promise.reject(error);

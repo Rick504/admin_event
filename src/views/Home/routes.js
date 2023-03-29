@@ -1,18 +1,18 @@
-import Home from '@/views/Home/_Home.vue'
+import Home from '@/views/Home/_Home.vue';
 
 export default [
   {
     name: 'Home',
-    path: '/home',
+    path: '/',
     component: Home,
     meta: {
       title: 'Home',
-      public: true,
+      public: false,
       layout: {
         dialogs: {
-          select: false
-        }
-      }
-    }
-  }
-]
+          select: false,
+        },
+      },
+    },
+  },
+];
