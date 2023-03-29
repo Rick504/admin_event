@@ -25,7 +25,6 @@
 
     yarn serve - subir o Vuejs
     yarn db - subir o json-server para testes de api
-    yarn db & yarn serve - subir os dois ao mesmo tempo
 
 ### Testar permissionamento:
 
