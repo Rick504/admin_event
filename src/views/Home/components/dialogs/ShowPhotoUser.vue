@@ -1,22 +1,13 @@
 <template>
-      <v-dialog
-        :value="dialog"
-        width="500"
-      >
-      <template v-slot:activator="{ on, attrs }">
-          <v-avatar
-            size="65"
-            class="mx-16 my-1"
-            >
-            <img
-              v-bind="attrs"
-              v-on="on"
-              :src="getRenderImageBase64(userPhoto)">
-          </v-avatar>
-        </template>
-        <img :src="getRenderImageBase64(userPhoto)">
-      </v-dialog>
-  </template>
+  <v-dialog :value="dialog" width="500">
+    <template v-slot:activator="{ on, attrs }">
+      <v-avatar size="65" class="mx-16 my-1">
+        <img v-bind="attrs" v-on="on" :src="getRenderImageBase64(userPhoto)">
+      </v-avatar>
+    </template>
+    <img :src="getRenderImageBase64(userPhoto)">
+  </v-dialog>
+</template>
 
 <script>
     import renderImageBase64 from '@/utils/renderImageBase64'
