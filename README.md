@@ -26,3 +26,28 @@
     yarn serve - subir o Vuejs
     yarn db - subir o json-server para testes de api
     yarn db & yarn serve - subir os dois ao mesmo tempo
+
+### Testar permissionamento:
+
+    # temos abaixo os administradores cadastrados no sistema, para testar o permicionamento trocamos a varivavel
+    de ambiente TESTE_ID no arquivo .env pelo id do admin e subimos a aplicaçao novamente, se mudarmos o permissionLevel tambem é possivel alterar o permissionamento:
+
+    "id": 1,
+    "name": "Rick",
+    "permissionLevel": "GENERAL_ADMIN"
+
+    "id": 2,
+    "name": "Joaquin",
+    "permissionLevel": "OPERATOR"
+
+    "id": 3,
+    "name": "Karla",
+    "permissionLevel": "OPERATOR"
+
+    "id": 4,
+    "name": "Julia",
+    "permissionLevel": "OPERATOR"
+
+    "id": 5,
+    "name": "Gabriel",
+    "permissionLevel": "VISIT"

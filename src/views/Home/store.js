@@ -34,12 +34,8 @@ const usersModule = {
   },
   actions: {
     async actionAdminDetail({ commit }) {
-      //test de permissão =================================================================================
-      let TESTE_ID = 1;
-      //test de permissão =================================================================================
-
       try {
-        const data = await adminsService.adminDetail(TESTE_ID);
+        const data = await adminsService.adminDetail(process.env.TESTE_ID);
         commit('SET_ADMIN', data.data);
       } catch {
         (error) => Promise.reject(error);
